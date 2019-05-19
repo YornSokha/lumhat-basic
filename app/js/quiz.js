@@ -4,7 +4,10 @@ $(document).ready(function () {
     function initComponents() {
         setupModal("Let's Start the Quiz", 'far fa-4x fa-clock', 'You have 20 Minutes',
             'START', 'btn btn-outline-primary waves-effect start');
-        $('#start-modal').modal('show')
+        $('#start-modal').modal({
+            backdrop: 'static',
+            keyboard: false
+        }, 'show')
     }
 
     initComponents();
@@ -47,12 +50,12 @@ $(document).ready(function () {
     }
 
     $(document).on('click', '.continue', () => {
-        alert("CONTINUE")
+        // alert("CONTINUE")
     });
 
     $(document).on('click', '.start', () => {
         // alert();
-        startTimer(60 * 20, $('#clock'))
+        startTimer(1 * 2, $('#clock'))
     });
 
     /**
@@ -148,10 +151,10 @@ $(document).ready(function () {
             questionItemDiv.id = `question_id_${i}`;
 
             let questionDescriptionDiv = document.createElement('div');
-            questionDescriptionDiv.id = `questionDescription`;
+            questionDescriptionDiv.id = `questionDescription_${i}`;
 
             let answerListDiv = document.createElement('div');
-            answerListDiv.id = "answerList";
+            answerListDiv.id = `answerList_${i}`;
             questionDescriptionDiv.innerHTML = question.questionDescription;
 
             let j = 0; // must change when apply with database
@@ -164,11 +167,10 @@ $(document).ready(function () {
 
                 inputAnswer.type = "radio";
                 inputAnswer.className = "form-check-input";
-                inputAnswer.name = "question_1"; //  inputAnswer.name = `question_${questionId}`;
-                inputAnswer.id = `answer_${j}`;
+                inputAnswer.name = `question_${i}`; //  inputAnswer.name = `question_${questionId}`;
+                inputAnswer.id = `answer_${i}_${j}`;
 
                 labelAnswer.className = "form-check-label";
-                labelAnswer.id = `answer_description_${j}`;
                 labelAnswer.innerHTML = answer.answerDescription;
 
                 answerGroup.appendChild(inputAnswer);
