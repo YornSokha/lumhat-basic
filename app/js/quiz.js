@@ -54,23 +54,108 @@ $(document).ready(function () {
         // alert();
         startTimer(ew * 1, $('#clock'))
     });
+});
 
+/**
+ *  dora part
+ */
+const collection = {
+    collectionId: 1,
+    questionList: [{
+            questionDescription: "What is A?",
+            answerList: [{
+                    answerDescription: "A",
+                    isCorrect: true,
+                },
 
-    /**
-     *  dora part
-     */
-    const questionSample = "What is your name?";
-    const answerSample = ["A", "B", "C", "D"];
+                {
+                    answerDescription: "B",
+                    isCorrect: false,
+                },
 
-    loadQuestion(question, answerSample);
+                {
+                    answerDescription: "C",
+                    isCorrect: false,
+                },
 
-    function loadQuestion(question, answerList) {
-        let questionDescription = document.getElementById('questionDescription');
-        let answerList = document.getElementById('answerList');
-        questionDescription.innerHTML = question;
+                {
+                    answerDescription: "D",
+                    isCorrect: false,
+                },
+            ],
+        },
 
-        let i = 0; // must change when apply with database
-        for (let answer in answerList) {
+        {
+            questionDescription: "What is B?",
+            answerList: [{
+                    answerDescription: "A",
+                    isCorrect: false,
+                },
+
+                {
+                    answerDescription: "B",
+                    isCorrect: true,
+                },
+
+                {
+                    answerDescription: "C",
+                    isCorrect: false,
+                },
+
+                {
+                    answerDescription: "D",
+                    isCorrect: false,
+                },
+            ],
+        },
+
+        {
+            questionDescription: "What is C?",
+            answerList: [{
+                    answerDescription: "A",
+                    isCorrect: false,
+                },
+
+                {
+                    answerDescription: "B",
+                    isCorrect: false,
+                },
+
+                {
+                    answerDescription: "C",
+                    isCorrect: true,
+                },
+
+                {
+                    answerDescription: "D",
+                    isCorrect: false,
+                },
+            ],
+        }
+    ],
+};
+
+// loadCollection(collection);
+
+function loadCollection(collection) {
+    let questionListDiv = document.getElementById('questionList');
+    let questionList = collection.questionList;
+
+    let i = 0;
+    for (let question of questionList) {
+        let questionItemDiv = document.createElement('div');
+        questionItemDiv.className = "question question-item";
+        questionItemDiv.id = `question_id_${i}`;
+
+        let questionDescriptionDiv = document.createElement('div');
+        questionDescriptionDiv.id = `questionDescription`;
+
+        let answerListDiv = document.createElement('div');
+        answerListDiv.id = "answerList";
+        questionDescriptionDiv.innerHTML = question.questionDescription;
+
+        let j = 0; // must change when apply with database
+        for (let answer of question.answerList) {
             let answerGroup = document.createElement('div');
             let inputAnswer = document.createElement('input');
             let labelAnswer = document.createElement('label');
@@ -80,17 +165,21 @@ $(document).ready(function () {
             inputAnswer.type = "radio";
             inputAnswer.className = "form-check-input";
             inputAnswer.name = "question_1"; //  inputAnswer.name = `question_${questionId}`;
-            inputAnswer.id = `answer_${i}`;
+            inputAnswer.id = `answer_${j}`;
 
             labelAnswer.className = "form-check-label";
-            labelAnswer.id = `answer_description_${i}`;
-            labelAnswer.innerHTML = answer;
+            labelAnswer.id = `answer_description_${j}`;
+            labelAnswer.innerHTML = answer.answerDescription;
 
             answerGroup.appendChild(inputAnswer);
             answerGroup.appendChild(labelAnswer);
-            answerList.appendChild(answerGroup);
+            answerListDiv.appendChild(answerGroup);
 
-            i++;
+            j++;
         }
+        questionItemDiv.appendChild(questionDescriptionDiv);
+        questionItemDiv.appendChild(answerListDiv);
+        questionListDiv.appendChild(questionItemDiv);
+        i++;
     }
-});
+}
