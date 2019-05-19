@@ -167,6 +167,7 @@ $(document).ready(function () {
 
                 inputAnswer.type = "radio";
                 inputAnswer.className = "form-check-input";
+                inputAnswer.value = answer.answerDescription;
                 inputAnswer.name = `question_${i}`; //  inputAnswer.name = `question_${questionId}`;
                 inputAnswer.id = `answer_${i}_${j}`;
 
@@ -182,6 +183,21 @@ $(document).ready(function () {
             questionItemDiv.appendChild(questionDescriptionDiv);
             questionItemDiv.appendChild(answerListDiv);
             questionListDiv.appendChild(questionItemDiv);
+
+            let radios = document.querySelectorAll('input[type=radio][name="question_' + i + '" ]');
+            function changeHandler(event) {
+                // if (this.value === '') {
+                //     alert("Correct")
+                // } else if (this.value === 'transfer') {
+                //     console.log('value', 'transfer');
+                // }
+
+                console.log(this.value);
+            }
+
+            Array.prototype.forEach.call(radios, function (radio) {
+                radio.addEventListener('change', changeHandler);
+            });
             i++;
         }
     }
