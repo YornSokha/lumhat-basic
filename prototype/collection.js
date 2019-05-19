@@ -1,0 +1,6 @@
+class Collection {
+    collectionId;
+    collectionName;
+    
+    
+}
