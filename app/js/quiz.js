@@ -169,6 +169,9 @@ $(document).ready(function () {
                 inputAnswer.className = "form-check-input";
                 inputAnswer.name = `question_${i}`; //  inputAnswer.name = `question_${questionId}`;
                 inputAnswer.id = `answer_${i}_${j}`;
+                inputAnswer.addEventListener('click', () =>{
+                
+                });
 
                 labelAnswer.className = "form-check-label";
                 labelAnswer.innerHTML = answer.answerDescription;
@@ -187,5 +190,4 @@ $(document).ready(function () {
     }
 
     loadCollection(collection);
-
 });
