@@ -50,6 +50,6 @@ $(document).on('click', '.continue' , () => {
 });
     $(document).on('click','.start', () => {
         // alert();
-        startTimer(6 * 1, $('#clock'))
+        startTimer(ew * 1, $('#clock'))
     });
 });
