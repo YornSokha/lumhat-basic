@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
     let interval = null;
 
@@ -10,7 +9,7 @@ $(document).ready(function () {
 
     initComponents();
     $('.calculate-score').on('click', () => {
-       alert("Total Score");
+        alert("Total Score");
     });
 
     function setupModal(header, icon, text, button, buttonClass) {
@@ -28,7 +27,8 @@ $(document).ready(function () {
     }
 
     function startTimer(duration, display) {
-        let timer = duration, minutes, seconds;
+        let timer = duration,
+            minutes, seconds;
         interval = setInterval(function () {
             minutes = parseInt(timer / 60, 10);
             seconds = parseInt(timer % 60, 10);
@@ -45,11 +45,52 @@ $(document).ready(function () {
 
         }, 1000);
     }
-$(document).on('click', '.continue' , () => {
-    alert("CONTINUE")
-});
-    $(document).on('click','.start', () => {
+
+    $(document).on('click', '.continue', () => {
+        alert("CONTINUE")
+    });
+
+    $(document).on('click', '.start', () => {
         // alert();
         startTimer(ew * 1, $('#clock'))
     });
+
+
+    /**
+     *  dora part
+     */
+    const questionSample = "What is your name?";
+    const answerSample = ["A", "B", "C", "D"];
+
+    loadQuestion(question, answerSample);
+
+    function loadQuestion(question, answerList) {
+        let questionDescription = document.getElementById('questionDescription');
+        let answerList = document.getElementById('answerList');
+        questionDescription.innerHTML = question;
+
+        let i = 0; // must change when apply with database
+        for (let answer in answerList) {
+            let answerGroup = document.createElement('div');
+            let inputAnswer = document.createElement('input');
+            let labelAnswer = document.createElement('label');
+
+            answerGroup.className = "form-check form-check-answer";
+
+            inputAnswer.type = "radio";
+            inputAnswer.className = "form-check-input";
+            inputAnswer.name = "question_1"; //  inputAnswer.name = `question_${questionId}`;
+            inputAnswer.id = `answer_${i}`;
+
+            labelAnswer.className = "form-check-label";
+            labelAnswer.id = `answer_description_${i}`;
+            labelAnswer.innerHTML = answer;
+
+            answerGroup.appendChild(inputAnswer);
+            answerGroup.appendChild(labelAnswer);
+            answerList.appendChild(answerGroup);
+
+            i++;
+        }
+    }
 });
