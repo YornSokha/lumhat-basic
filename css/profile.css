@@ -1,19 +1,20 @@
-tr{
+tr {
     border: 1px solid black;
-    
+
 }
-th{
+
+th {
     border: 1px solid red;
     width: 200px;
 }
 
-.item-w-100 > td{
+.item-w-100>td {
     width: 200px;
     background-color: aqua;
 }
 
-.tbl-item > thead{
-    background-color: green;   
+.tbl-item>thead {
+    background-color: green;
 }
 
 .profile-card .avatar {
@@ -36,7 +37,7 @@ th{
     border-radius: 3px;
 }
 
-.cus-bg{
+.cus-bg {
     height: 250px;
     background-image: url("../imgPro/bgPro.jpg");
 }
@@ -51,7 +52,7 @@ th{
     /* z-index: 1; */
 }
 
-.cus-change{
+.cus-change {
     width: 250px;
     height: 125px;
     border-bottom-left-radius: 250px;
@@ -60,3 +61,5 @@ th{
     /* border-radius: 50%; */
 
 }
+
+
