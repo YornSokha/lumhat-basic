@@ -1,0 +1,62 @@
+tr{
+    border: 1px solid black;
+    
+}
+th{
+    border: 1px solid red;
+    width: 200px;
+}
+
+.item-w-100 > td{
+    width: 200px;
+    background-color: aqua;
+}
+
+.tbl-item > thead{
+    background-color: green;   
+}
+
+.profile-card .avatar {
+    /* max-width: 150px; */
+    /* max-height: 150px; */
+    margin-top: -125px;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.cascading-admin-card .admin-up .fas {
+    padding: 1.7rem;
+    font-size: 2rem;
+    color: #fff;
+    text-align: left;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.cus-bg{
+    height: 250px;
+    background-image: url("../imgPro/bgPro.jpg");
+}
+
+.centered {
+    position: absolute;
+    /* position: relative; */
+    /* top: 50%; */
+    top: 312px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* z-index: 1; */
+}
+
+.cus-change{
+    width: 250px;
+    height: 125px;
+    border-bottom-left-radius: 250px;
+    border-bottom-right-radius: 250px;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* border-radius: 50%; */
+
+}
