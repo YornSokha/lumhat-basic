@@ -141,8 +141,13 @@ $(document).ready(function () {
     };
 
     function loadCollection(collection) {
+        let progressBarAnswersDiv = document.getElementById('progressBarAnswers');
+        let questionActiveDiv = document.getElementById('questionActive');
+        let questionCountDiv = document.getElementById('questionCount');
         let questionListDiv = document.getElementById('questionList');
         let questionList = collection.questionList;
+
+        questionActiveDiv.innerHTML = 0;
 
         let i = 0;
         for (let question of questionList) {
@@ -170,9 +175,6 @@ $(document).ready(function () {
                 inputAnswer.value = answer.answerDescription;
                 inputAnswer.name = `question_${i}`; //  inputAnswer.name = `question_${questionId}`;
                 inputAnswer.id = `answer_${i}_${j}`;
-                inputAnswer.addEventListener('click', () =>{
-                
-                });
 
                 labelAnswer.className = "form-check-label";
                 labelAnswer.innerHTML = answer.answerDescription;
@@ -183,6 +185,7 @@ $(document).ready(function () {
 
                 j++;
             }
+
             questionItemDiv.appendChild(questionDescriptionDiv);
             questionItemDiv.appendChild(answerListDiv);
             questionListDiv.appendChild(questionItemDiv);
@@ -194,7 +197,6 @@ $(document).ready(function () {
                 // } else if (this.value === 'transfer') {
                 //     console.log('value', 'transfer');
                 // }
-
                 console.log(this.value);
             }
 
@@ -203,6 +205,9 @@ $(document).ready(function () {
             });
             i++;
         }
+
+        // set questionCount
+        questionCountDiv.innerHTML = i;
     }
 
     loadCollection(collection);
