@@ -4,7 +4,10 @@ $(document).ready(function () {
     function initComponents() {
         setupModal("Let's Start the Quiz", 'far fa-4x fa-clock', 'You have 20 Minutes',
             'START', 'btn btn-outline-primary waves-effect start');
-        $('#start-modal').modal('show')
+        $('#start-modal').modal({
+            backdrop: 'static',
+            keyboard: false
+        }, 'show')
     }
 
     initComponents();
@@ -23,7 +26,7 @@ $(document).ready(function () {
         clearInterval(interval);
         setupModal('Time up', 'far fa-4x fa-check-circle', 'Please check your result!',
             'CONTINUE', 'btn btn-warning waves-effect continue');
-        $('#start-modal').removeClass('modal-info').addClass('modal-warning').modal('show');
+        $('.modal-dialog').removeClass('modal-info').addClass('modal-warning').parent().modal('show');
     }
 
     function startTimer(duration, display) {
@@ -47,139 +50,156 @@ $(document).ready(function () {
     }
 
     $(document).on('click', '.continue', () => {
-        alert("CONTINUE")
+        // alert("CONTINUE")
     });
 
     $(document).on('click', '.start', () => {
         // alert();
-        startTimer(6 * 1, $('#clock'))
+        startTimer(1 * 2, $('#clock'))
     });
-});
 
-/**
- *  dora part
- */
-const collection = {
-    collectionId: 1,
-    questionList: [{
+    /**
+     *  dora part
+     */
+    const collection = {
+        collectionId: 1,
+        questionList: [{
+            questionId: 1,
             questionDescription: "What is A?",
-            answerList: [{
+            answerList: [
+                {
+                    answerId: 1,
                     answerDescription: "A",
                     isCorrect: true,
                 },
 
                 {
+                    answerId: 2,
                     answerDescription: "B",
                     isCorrect: false,
                 },
 
                 {
+                    answerId: 3,
                     answerDescription: "C",
                     isCorrect: false,
                 },
 
                 {
+                    answerId: 4,
                     answerDescription: "D",
                     isCorrect: false,
                 },
             ],
         },
 
-        {
-            questionDescription: "What is B?",
-            answerList: [{
-                    answerDescription: "A",
-                    isCorrect: false,
-                },
+            {
+                questionId: 2,
+                questionDescription: "What is B?",
+                answerList: [
+                    {
+                        answerId: 1,
+                        answerDescription: "A",
+                        isCorrect: false,
+                    },
 
-                {
-                    answerDescription: "B",
-                    isCorrect: true,
-                },
+                    {
+                        answerId: 2,
+                        answerDescription: "B",
+                        isCorrect: true,
+                    },
 
-                {
-                    answerDescription: "C",
-                    isCorrect: false,
-                },
+                    {
+                        answerId: 3,
+                        answerDescription: "C",
+                        isCorrect: false,
+                    },
 
-                {
-                    answerDescription: "D",
-                    isCorrect: false,
-                },
-            ],
-        },
+                    {
+                        answerId: 4,
+                        answerDescription: "D",
+                        isCorrect: false,
+                    },
+                ],
+            },
 
-        {
-            questionDescription: "What is C?",
-            answerList: [{
-                    answerDescription: "A",
-                    isCorrect: false,
-                },
+            {
+                questionId: 3,
+                questionDescription: "What is C?",
+                answerList: [
+                    {
+                        answerId: 1,
+                        answerDescription: "A",
+                        isCorrect: false,
+                    },
 
-                {
-                    answerDescription: "B",
-                    isCorrect: false,
-                },
+                    {
+                        answerId: 2,
+                        answerDescription: "B",
+                        isCorrect: false,
+                    },
 
-                {
-                    answerDescription: "C",
-                    isCorrect: true,
-                },
+                    {
+                        answerId: 3,
+                        answerDescription: "C",
+                        isCorrect: true,
+                    },
 
-                {
-                    answerDescription: "D",
-                    isCorrect: false,
-                },
-            ],
+                    {
+                        answerId: 4,
+                        answerDescription: "D",
+                        isCorrect: false,
+                    },
+                ],
+            }
+        ],
+    };
+
+    function loadCollection(collection) {
+        let str = "";
+        let questionList = collection.questionList;
+
+        for (let question of questionList) {
+            str +=
+                `<div class=\"question question-item\" id=\"question_id_${question.questionId}\">` +
+                `<div id=\"questionDescription_${question.questionId}\">${question.questionDescription}</div>` +
+                `<div id=\"answerList_${question.questionId}\">`;
+
+            for (let answer of question.answerList) {
+                str +=
+                    `<div class=\"form-check form-check-answer\">` +
+                    `<input type=\"radio\" class=\"form-check-input\" value=\"${answer.answerDescription}\" name=\"question_${question.questionId}\" id=\"answer_${question.questionId}_${answer.answerId}\">` +
+                    `<label class=\"form-check-label\">${answer.answerDescription}</label>` +
+                    `</div>`;
+            }
+
+            str += `</div></div>`;
         }
-    ],
-};
-
-// loadCollection(collection);
-
-function loadCollection(collection) {
-    let questionListDiv = document.getElementById('questionList');
-    let questionList = collection.questionList;
-
-    let i = 0;
-    for (let question of questionList) {
-        let questionItemDiv = document.createElement('div');
-        questionItemDiv.className = "question question-item";
-        questionItemDiv.id = `question_id_${i}`;
-
-        let questionDescriptionDiv = document.createElement('div');
-        questionDescriptionDiv.id = `questionDescription`;
-
-        let answerListDiv = document.createElement('div');
-        answerListDiv.id = "answerList";
-        questionDescriptionDiv.innerHTML = question.questionDescription;
-
-        let j = 0; // must change when apply with database
-        for (let answer of question.answerList) {
-            let answerGroup = document.createElement('div');
-            let inputAnswer = document.createElement('input');
-            let labelAnswer = document.createElement('label');
-
-            answerGroup.className = "form-check form-check-answer";
-
-            inputAnswer.type = "radio";
-            inputAnswer.className = "form-check-input";
-            inputAnswer.name = "question_1"; //  inputAnswer.name = `question_${questionId}`;
-            inputAnswer.id = `answer_${j}`;
-
-            labelAnswer.className = "form-check-label";
-            labelAnswer.id = `answer_description_${j}`;
-            labelAnswer.innerHTML = answer.answerDescription;
-
-            answerGroup.appendChild(inputAnswer);
-            answerGroup.appendChild(labelAnswer);
-            answerListDiv.appendChild(answerGroup);
-
-            j++;
-        }
-        questionItemDiv.appendChild(questionDescriptionDiv);
-        questionItemDiv.appendChild(answerListDiv);
-        questionListDiv.appendChild(questionItemDiv);
-        i++;
+        document.getElementById('questionList').innerHTML = str;
     }
-}
+
+    function applyEvents() {
+        let questionListDiv = document.getElementById('questionList');
+        let countQuestion = questionListDiv.childElementCount;
+
+        for(let i=1; i<=countQuestion; i++) {
+            let radios = document.querySelectorAll('input[type=radio][name="question_' + i + '"]');
+            function changeHandler(event) {
+                // if (this.value === '') {
+                //     alert("Correct")
+                // } else if (this.value === 'transfer') {
+                //     console.log('value', 'transfer');
+                // }
+
+                console.log(this.value);
+            }
+
+            Array.prototype.forEach.call(radios, function (radio) {
+                radio.addEventListener('change', changeHandler);
+            });
+        }
+    }
+
+    loadCollection(collection);
+    applyEvents();
+});

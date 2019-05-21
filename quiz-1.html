@@ -23,17 +23,72 @@
 
     <body>
         <!-- Start your project here-->
-        <div class="container-fluid"></div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col col-md-12">
+                    <div id="questionList">
+                    </div>
+                    <button class="btn btn-primary calculate">OK</button>
+                </div>
+            </div>
 
-        <div class="container-fluid pt-2 pb-2 fixed-bottom" id="timer">
+            <!-- Modal Start -->
+            <div
+                class="modal fade"
+                id="start-modal"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+            >
+                <div
+                    class="modal-dialog modal-notify modal-info"
+                    role="document"
+                >
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <p class="heading lead"></p>
+                        </div>
+                        <!-- Body -->
+                        <div class="modal-body">
+                            <div class="text-center">
+                                <i class="far fa-4x fa-clock"></i>
+                                <!-- <i class="fa fa-clock-o fa-4x mb-3 animated rotateIn"></i> -->
+                                <p class="mt-2">00:00</p>
+                            </div>
+                        </div>
+                        <div class="modal-footer justify-content-center">
+                            <a
+                                class="btn btn-outline-primary waves-effect"
+                                data-dismiss="modal"
+                            ></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- /Start your project here-->
+
+        <div class="container-fluid pt-3 pb-1 fixed-bottom" id="timer">
             <div class="row">
                 <div class="col col-md-6">
                     <div class="row">
                         <div class="col-md-6 col-sm-6 col-12 text-right ">
-                            <span
-                                ><span id="questionActive">0</span> of
-                                <span id="questionCount">20</span> answers</span
-                            >
+                            <span>
+                                <span id="questionActive">
+                                    <!-- answered number -->
+                                    <!-- default value -->
+                                    0
+                                </span> 
+                                of
+                                <span id="questionCount">
+                                    <!-- total answers number -->
+                                    <!-- default value -->
+                                    0
+                                </span>
+                                answers
+                            </span>
                         </div>
                         <div class="col-md-6 col-sm-6 text-right">
                             <div
@@ -41,10 +96,11 @@
                                 style="height: 10px; width: 50% ;margin-top: 7px"
                             >
                                 <div
+                                    id="progressBarAnswers"
                                     class="progress-bar"
                                     role="progressbar"
                                     style="height: 10px; width: 0%;"
-                                    aria-valuenow="25"
+                                    aria-valuenow="0"
                                     aria-valuemin="0"
                                     aria-valuemax="100"
                                 ></div>
@@ -64,7 +120,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!--&lt;!&ndash; Footer &ndash;&gt;-->
         <!--<footer class="page-footer font-small blue fixed-bottom">-->
 
@@ -76,61 +132,6 @@
 
         <!--</footer>-->
         <!--&lt;!&ndash; Footer &ndash;&gt;-->
-
-        <!-- Modal Start -->
-        <div
-            class="modal modal-dialog modal-notify modal-info fade"
-            id="start-modal"
-            tabindex="-1"
-            role="dialog"
-            aria-labelledby="exampleModalLabel"
-            aria-hidden="true"
-        >
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <p class="heading lead">Let's Start the Quiz</p>
-                    </div>
-                    <!-- Body -->
-                    <div class="modal-body">
-                        <div class="text-center">
-                            <i class="far fa-4x fa-clock"></i>
-                            <!-- <i class="fa fa-clock-o fa-4x mb-3 animated rotateIn"></i> -->
-                            <p class="mt-2">You have <span>20</span> Minutes</p>
-                        </div>
-                    </div>
-                    <div class="modal-footer justify-content-center">
-                        <a
-                            class="btn btn-outline-primary waves-effect"
-                            data-dismiss="modal"
-                            >Start</a
-                        >
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Start your project here-->
-        <div class="container">
-            <div>
-                <!-- 
-                    Read question description from question collection,
-                    get question description and add it into p[id="question_description"].
-                -->
-                <p id="questionDescription" class="question-description">
-                    <!-- question here -->
-                </p>
-
-                <!-- 
-                    Read answer list from answer collection,
-                    get answer description and add it into label[class="form-check-label"] 
-                -->
-                <div id="answerList" class="answer-list">
-                    <!-- add answer item -->
-                </div>
-            </div>
-        </div>
-        <!-- /Start your project here-->
 
         <!-- SCRIPTS -->
         <!-- JQuery -->
