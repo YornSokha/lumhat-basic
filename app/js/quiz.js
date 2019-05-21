@@ -64,24 +64,29 @@ $(document).ready(function () {
     const collection = {
         collectionId: 1,
         questionList: [{
+            questionId: 1,
             questionDescription: "What is A?",
             answerList: [
                 {
+                    answerId: 1,
                     answerDescription: "A",
                     isCorrect: true,
                 },
 
                 {
+                    answerId: 2,
                     answerDescription: "B",
                     isCorrect: false,
                 },
 
                 {
+                    answerId: 3,
                     answerDescription: "C",
                     isCorrect: false,
                 },
 
                 {
+                    answerId: 4,
                     answerDescription: "D",
                     isCorrect: false,
                 },
@@ -89,24 +94,29 @@ $(document).ready(function () {
         },
 
             {
+                questionId: 2,
                 questionDescription: "What is B?",
                 answerList: [
                     {
+                        answerId: 1,
                         answerDescription: "A",
                         isCorrect: false,
                     },
 
                     {
+                        answerId: 2,
                         answerDescription: "B",
                         isCorrect: true,
                     },
 
                     {
+                        answerId: 3,
                         answerDescription: "C",
                         isCorrect: false,
                     },
 
                     {
+                        answerId: 4,
                         answerDescription: "D",
                         isCorrect: false,
                     },
@@ -114,24 +124,29 @@ $(document).ready(function () {
             },
 
             {
+                questionId: 3,
                 questionDescription: "What is C?",
                 answerList: [
                     {
+                        answerId: 1,
                         answerDescription: "A",
                         isCorrect: false,
                     },
 
                     {
+                        answerId: 2,
                         answerDescription: "B",
                         isCorrect: false,
                     },
 
                     {
+                        answerId: 3,
                         answerDescription: "C",
                         isCorrect: true,
                     },
 
                     {
+                        answerId: 4,
                         answerDescription: "D",
                         isCorrect: false,
                     },
@@ -141,74 +156,50 @@ $(document).ready(function () {
     };
 
     function loadCollection(collection) {
-        let progressBarAnswersDiv = document.getElementById('progressBarAnswers');
-        let questionActiveDiv = document.getElementById('questionActive');
-        let questionCountDiv = document.getElementById('questionCount');
-        let questionListDiv = document.getElementById('questionList');
+        let str = "";
         let questionList = collection.questionList;
 
-        questionActiveDiv.innerHTML = 0;
-
-        let i = 0;
         for (let question of questionList) {
-            let questionItemDiv = document.createElement('div');
-            questionItemDiv.className = "question question-item";
-            questionItemDiv.id = `question_id_${i}`;
+            str +=
+                `<div class=\"question question-item\" id=\"question_id_${question.questionId}\">` +
+                `<div id=\"questionDescription_${question.questionId}\">${question.questionDescription}</div>` +
+                `<div id=\"answerList_${question.questionId}\">`;
 
-            let questionDescriptionDiv = document.createElement('div');
-            questionDescriptionDiv.id = `questionDescription_${i}`;
-
-            let answerListDiv = document.createElement('div');
-            answerListDiv.id = `answerList_${i}`;
-            questionDescriptionDiv.innerHTML = question.questionDescription;
-
-            let j = 0; // must change when apply with database
             for (let answer of question.answerList) {
-                let answerGroup = document.createElement('div');
-                let inputAnswer = document.createElement('input');
-                let labelAnswer = document.createElement('label');
-
-                answerGroup.className = "form-check form-check-answer";
-
-                inputAnswer.type = "radio";
-                inputAnswer.className = "form-check-input";
-                inputAnswer.value = answer.answerDescription;
-                inputAnswer.name = `question_${i}`; //  inputAnswer.name = `question_${questionId}`;
-                inputAnswer.id = `answer_${i}_${j}`;
-
-                labelAnswer.className = "form-check-label";
-                labelAnswer.innerHTML = answer.answerDescription;
-
-                answerGroup.appendChild(inputAnswer);
-                answerGroup.appendChild(labelAnswer);
-                answerListDiv.appendChild(answerGroup);
-
-                j++;
+                str +=
+                    `<div class=\"form-check form-check-answer\">` +
+                    `<input type=\"radio\" class=\"form-check-input\" value=\"${answer.answerDescription}\" name=\"question_${question.questionId}\" id=\"answer_${question.questionId}_${answer.answerId}\">` +
+                    `<label class=\"form-check-label\">${answer.answerDescription}</label>` +
+                    `</div>`;
             }
 
-            questionItemDiv.appendChild(questionDescriptionDiv);
-            questionItemDiv.appendChild(answerListDiv);
-            questionListDiv.appendChild(questionItemDiv);
+            str += `</div></div>`;
+        }
+        document.getElementById('questionList').innerHTML = str;
+    }
 
-            let radios = document.querySelectorAll('input[type=radio][name="question_' + i + '" ]');
+    function applyEvents() {
+        let questionListDiv = document.getElementById('questionList');
+        let countQuestion = questionListDiv.childElementCount;
+
+        for(let i=1; i<=countQuestion; i++) {
+            let radios = document.querySelectorAll('input[type=radio][name="question_' + i + '"]');
             function changeHandler(event) {
                 // if (this.value === '') {
                 //     alert("Correct")
                 // } else if (this.value === 'transfer') {
                 //     console.log('value', 'transfer');
                 // }
+
                 console.log(this.value);
             }
 
             Array.prototype.forEach.call(radios, function (radio) {
                 radio.addEventListener('change', changeHandler);
             });
-            i++;
         }
-
-        // set questionCount
-        questionCountDiv.innerHTML = i;
     }
 
     loadCollection(collection);
+    applyEvents();
 });
