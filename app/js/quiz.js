@@ -1,5 +1,6 @@
 $(document).ready(function () {
     let interval = null;
+    let totalQuestion = 0;
 
     function initComponents() {
         setupModal("Let's Start the Quiz", 'far fa-4x fa-clock', 'You have 20 Minutes',
@@ -64,40 +65,38 @@ $(document).ready(function () {
     const collection = {
         collectionId: 1,
         questionList: [{
-            questionId: 1,
-            questionDescription: "What is A?",
-            answerList: [
-                {
-                    answerId: 1,
-                    answerDescription: "A",
-                    isCorrect: true,
-                },
+                questionId: 1,
+                questionDescription: "What is A?",
+                answerList: [{
+                        answerId: 1,
+                        answerDescription: "A",
+                        isCorrect: true,
+                    },
 
-                {
-                    answerId: 2,
-                    answerDescription: "B",
-                    isCorrect: false,
-                },
+                    {
+                        answerId: 2,
+                        answerDescription: "B",
+                        isCorrect: false,
+                    },
 
-                {
-                    answerId: 3,
-                    answerDescription: "C",
-                    isCorrect: false,
-                },
+                    {
+                        answerId: 3,
+                        answerDescription: "C",
+                        isCorrect: false,
+                    },
 
-                {
-                    answerId: 4,
-                    answerDescription: "D",
-                    isCorrect: false,
-                },
-            ],
-        },
+                    {
+                        answerId: 4,
+                        answerDescription: "D",
+                        isCorrect: false,
+                    },
+                ],
+            },
 
             {
                 questionId: 2,
                 questionDescription: "What is B?",
-                answerList: [
-                    {
+                answerList: [{
                         answerId: 1,
                         answerDescription: "A",
                         isCorrect: false,
@@ -126,8 +125,7 @@ $(document).ready(function () {
             {
                 questionId: 3,
                 questionDescription: "What is C?",
-                answerList: [
-                    {
+                answerList: [{
                         answerId: 1,
                         answerDescription: "A",
                         isCorrect: false,
@@ -151,6 +149,93 @@ $(document).ready(function () {
                         isCorrect: false,
                     },
                 ],
+            },
+
+            {
+                questionId: 4,
+                questionDescription: "What is C?",
+                answerList: [{
+                        answerId: 1,
+                        answerDescription: "A",
+                        isCorrect: false,
+                    },
+
+                    {
+                        answerId: 2,
+                        answerDescription: "B",
+                        isCorrect: false,
+                    },
+
+                    {
+                        answerId: 3,
+                        answerDescription: "C",
+                        isCorrect: true,
+                    },
+
+                    {
+                        answerId: 4,
+                        answerDescription: "D",
+                        isCorrect: false,
+                    },
+                ],
+            },
+
+            {
+                questionId: 5,
+                questionDescription: "What is E?",
+                answerList: [{
+                        answerId: 1,
+                        answerDescription: "E",
+                        isCorrect: true,
+                    },
+
+                    {
+                        answerId: 2,
+                        answerDescription: "F",
+                        isCorrect: false,
+                    },
+
+                    {
+                        answerId: 3,
+                        answerDescription: "G",
+                        isCorrect: false,
+                    },
+
+                    {
+                        answerId: 4,
+                        answerDescription: "H",
+                        isCorrect: false,
+                    },
+                ],
+            },
+
+            {
+                questionId: 6,
+                questionDescription: "What is H?",
+                answerList: [{
+                        answerId: 1,
+                        answerDescription: "H",
+                        isCorrect: true,
+                    },
+
+                    {
+                        answerId: 2,
+                        answerDescription: "Z",
+                        isCorrect: false,
+                    },
+
+                    {
+                        answerId: 3,
+                        answerDescription: "X",
+                        isCorrect: true,
+                    },
+
+                    {
+                        answerId: 4,
+                        answerDescription: "C",
+                        isCorrect: false,
+                    },
+                ],
             }
         ],
     };
@@ -168,7 +253,7 @@ $(document).ready(function () {
             for (let answer of question.answerList) {
                 str +=
                     `<div class=\"form-check form-check-answer\">` +
-                    `<input type=\"radio\" class=\"form-check-input\" value=\"${answer.answerDescription}\" name=\"question_${question.questionId}\" id=\"answer_${question.questionId}_${answer.answerId}\">` +
+                    `<input type=\"radio\" class=\"form-check-input\" value=\"${answer.answerDescription}\" name=\"question_${question.questionId}\" id=\"answer_${question.questionId}_${answer.answerId}\" is-correct=\"${answer.isCorrect}\">` +
                     `<label class=\"form-check-label\">${answer.answerDescription}</label>` +
                     `</div>`;
             }
@@ -176,14 +261,37 @@ $(document).ready(function () {
             str += `</div></div>`;
         }
         document.getElementById('questionList').innerHTML = str;
+
+        // Get total question length
+        totalQuestion = parseInt($('#questionList').children().length);
+        $('#questionCount').text(totalQuestion);
+    }
+
+    function getAnsweredQuestionCount() {
+        let answeredCount = 0;
+        for (let i = 1; i <= totalQuestion; i++) {
+            let question = $(`input[name='question_${i}']:checked`);
+            if (question.length === 1)
+                answeredCount++;
+        }
+
+        // clean right here
+        $('#questionActive').text(answeredCount);
+
+        return answeredCount;
     }
 
     function applyEvents() {
         let questionListDiv = document.getElementById('questionList');
         let countQuestion = questionListDiv.childElementCount;
 
-        for(let i=1; i<=countQuestion; i++) {
+        for (let i = 1; i <= countQuestion; i++) {
             let radios = document.querySelectorAll('input[type=radio][name="question_' + i + '"]');
+
+            Array.prototype.forEach.call(radios, function (radio) {
+                radio.addEventListener('change', changeHandler);
+            });
+
             function changeHandler(event) {
                 // if (this.value === '') {
                 //     alert("Correct")
@@ -191,15 +299,27 @@ $(document).ready(function () {
                 //     console.log('value', 'transfer');
                 // }
 
-                console.log(this.value);
-            }
+                let selectedGroup = $(`input[name="${this.name}"]:checked`).length;
+                console.log(selectedGroup);
 
-            Array.prototype.forEach.call(radios, function (radio) {
-                radio.addEventListener('change', changeHandler);
-            });
+                let group = $(`input[name="question_${i}"]:checked`);
+                console.log(group);
+
+                console.log("i = " + i);
+                setProgressBar(getPercentProgressBar(getAnsweredQuestionCount(), totalQuestion));
+            }
         }
     }
 
+    function getPercentProgressBar(answeredCount, total) {
+        return answeredCount * 100 / total;
+    }
+
+    function setProgressBar(percent) {
+        $('#progressBarAnswers').attr('aria-valuenow', percent).css('width', percent + '%');
+    }
+
     loadCollection(collection);
+    // rename function
     applyEvents();
 });
