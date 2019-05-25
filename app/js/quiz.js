@@ -62,31 +62,77 @@ $(document).ready(function () {
     /**
      *  dora part
      */
+    function Collection(collectionId, questionList) {
+        this._collectionId = collectionId;
+        this._questionList = questionList;
+    }
+
+    function QuestionList(questionId, questionDescription, answerList) {
+        this._questionId = questionId;
+        this._questionDescription = questionDescription;
+        this._answerList = answerList;
+    }
+
+    function AnswerList(answerId, answerDescription, isCorrect) {
+        this._answerId = answerId;
+        this._answerDescription = answerDescription;
+        this._isCorrect = isCorrect;
+    }
+
     const collection = {
-        collectionId: 1,
+        collectionId: 0,
         questionList: [{
-                questionId: 1,
+                questionId: 0,
                 questionDescription: "What is A?",
                 answerList: [{
-                        answerId: 1,
+                        answerId: 0,
                         answerDescription: "A",
                         isCorrect: true,
                     },
 
                     {
-                        answerId: 2,
+                        answerId: 1,
                         answerDescription: "B",
                         isCorrect: false,
                     },
 
                     {
-                        answerId: 3,
+                        answerId: 2,
                         answerDescription: "C",
                         isCorrect: false,
                     },
 
                     {
-                        answerId: 4,
+                        answerId: 3,
+                        answerDescription: "D",
+                        isCorrect: false,
+                    },
+                ],
+            },
+
+            {
+                questionId: 1,
+                questionDescription: "What is B?",
+                answerList: [{
+                        answerId: 0,
+                        answerDescription: "A",
+                        isCorrect: false,
+                    },
+
+                    {
+                        answerId: 1,
+                        answerDescription: "B",
+                        isCorrect: true,
+                    },
+
+                    {
+                        answerId: 2,
+                        answerDescription: "C",
+                        isCorrect: false,
+                    },
+
+                    {
+                        answerId: 3,
                         answerDescription: "D",
                         isCorrect: false,
                     },
@@ -95,27 +141,27 @@ $(document).ready(function () {
 
             {
                 questionId: 2,
-                questionDescription: "What is B?",
+                questionDescription: "What is C?",
                 answerList: [{
-                        answerId: 1,
+                        answerId: 0,
                         answerDescription: "A",
                         isCorrect: false,
                     },
 
                     {
-                        answerId: 2,
+                        answerId: 1,
                         answerDescription: "B",
+                        isCorrect: false,
+                    },
+
+                    {
+                        answerId: 2,
+                        answerDescription: "C",
                         isCorrect: true,
                     },
 
                     {
                         answerId: 3,
-                        answerDescription: "C",
-                        isCorrect: false,
-                    },
-
-                    {
-                        answerId: 4,
                         answerDescription: "D",
                         isCorrect: false,
                     },
@@ -126,25 +172,25 @@ $(document).ready(function () {
                 questionId: 3,
                 questionDescription: "What is C?",
                 answerList: [{
-                        answerId: 1,
+                        answerId: 0,
                         answerDescription: "A",
                         isCorrect: false,
                     },
 
                     {
-                        answerId: 2,
+                        answerId: 1,
                         answerDescription: "B",
                         isCorrect: false,
                     },
 
                     {
-                        answerId: 3,
+                        answerId: 2,
                         answerDescription: "C",
                         isCorrect: true,
                     },
 
                     {
-                        answerId: 4,
+                        answerId: 3,
                         answerDescription: "D",
                         isCorrect: false,
                     },
@@ -153,28 +199,28 @@ $(document).ready(function () {
 
             {
                 questionId: 4,
-                questionDescription: "What is C?",
+                questionDescription: "What is E?",
                 answerList: [{
+                        answerId: 0,
+                        answerDescription: "E",
+                        isCorrect: true,
+                    },
+
+                    {
                         answerId: 1,
-                        answerDescription: "A",
+                        answerDescription: "F",
                         isCorrect: false,
                     },
 
                     {
                         answerId: 2,
-                        answerDescription: "B",
+                        answerDescription: "G",
                         isCorrect: false,
                     },
 
                     {
                         answerId: 3,
-                        answerDescription: "C",
-                        isCorrect: true,
-                    },
-
-                    {
-                        answerId: 4,
-                        answerDescription: "D",
+                        answerDescription: "H",
                         isCorrect: false,
                     },
                 ],
@@ -182,56 +228,27 @@ $(document).ready(function () {
 
             {
                 questionId: 5,
-                questionDescription: "What is E?",
-                answerList: [{
-                        answerId: 1,
-                        answerDescription: "E",
-                        isCorrect: true,
-                    },
-
-                    {
-                        answerId: 2,
-                        answerDescription: "F",
-                        isCorrect: false,
-                    },
-
-                    {
-                        answerId: 3,
-                        answerDescription: "G",
-                        isCorrect: false,
-                    },
-
-                    {
-                        answerId: 4,
-                        answerDescription: "H",
-                        isCorrect: false,
-                    },
-                ],
-            },
-
-            {
-                questionId: 6,
                 questionDescription: "What is H?",
                 answerList: [{
-                        answerId: 1,
+                        answerId: 0,
                         answerDescription: "H",
                         isCorrect: true,
                     },
 
                     {
-                        answerId: 2,
+                        answerId: 1,
                         answerDescription: "Z",
                         isCorrect: false,
                     },
 
                     {
-                        answerId: 3,
+                        answerId: 2,
                         answerDescription: "X",
                         isCorrect: true,
                     },
 
                     {
-                        answerId: 4,
+                        answerId: 3,
                         answerDescription: "C",
                         isCorrect: false,
                     },
@@ -269,7 +286,7 @@ $(document).ready(function () {
 
     function getAnsweredQuestionCount() {
         let answeredCount = 0;
-        for (let i = 1; i <= totalQuestion; i++) {
+        for (let i = 0; i < totalQuestion; i++) {
             let question = $(`input[name='question_${i}']:checked`);
             if (question.length === 1)
                 answeredCount++;
@@ -281,34 +298,53 @@ $(document).ready(function () {
         return answeredCount;
     }
 
-    function applyEvents() {
-        let questionListDiv = document.getElementById('questionList');
-        let countQuestion = questionListDiv.childElementCount;
+    function answerListApplyListener() {
+        let questionListDiv = $('#questionList');
+        let questionItemList = questionListDiv.children();
+        let answerListOnly = questionItemList.children(':odd');
 
-        for (let i = 1; i <= countQuestion; i++) {
-            let radios = document.querySelectorAll('input[type=radio][name="question_' + i + '"]');
-
-            Array.prototype.forEach.call(radios, function (radio) {
-                radio.addEventListener('change', changeHandler);
-            });
-
-            function changeHandler(event) {
-                // if (this.value === '') {
-                //     alert("Correct")
-                // } else if (this.value === 'transfer') {
-                //     console.log('value', 'transfer');
-                // }
-
-                let selectedGroup = $(`input[name="${this.name}"]:checked`).length;
-                console.log(selectedGroup);
-
-                let group = $(`input[name="question_${i}"]:checked`);
-                console.log(group);
-
-                console.log("i = " + i);
-                setProgressBar(getPercentProgressBar(getAnsweredQuestionCount(), totalQuestion));
+        for(let item of answerListOnly) {
+            for(let subitem of item.childNodes) {
+                subitem.firstChild.addEventListener('change', changeHandler);
+                subitem.lastChild.addEventListener('click', changeHandler);
             }
         }
+
+        // for (let i = 0; i < countQuestion; i++) {
+        //     let radios = $('input[type=radio][name="question_' + i + '"]');
+        //
+        //     Array.prototype.forEach.call(radios, function (radio) {
+        //         radio.addEventListener('change', changeHandler);
+        //     });
+        // }
+    }
+
+    function changeHandler(event) {
+        // if (this.value === '') {
+        //     alert("Correct")
+        // } else if (this.value === 'transfer') {
+        //     console.log('value', 'transfer');
+        // }
+
+        if(this.tagName !== 'LABEL')
+            setHightlightSelectedAnswer(this.id, this.name);
+        else {
+            let inputField = this.parentNode.firstChild;
+            setHightlightSelectedAnswer(inputField.id, inputField.name);
+
+            inputField.checked = true;
+        }
+
+        setProgressBar(getPercentProgressBar(getAnsweredQuestionCount(), totalQuestion));
+    }
+
+    function setHightlightSelectedAnswer(selectedId, selectedName) {
+        let selectedGroup = $(`input[name="${selectedName}"]`);
+        for(let item of selectedGroup) {
+            if(item.parentElement.classList.contains('default-color'))
+               item.parentElement.classList.remove('default-color');
+        }
+        $(`#${selectedId}`).parent().addClass('default-color');
     }
 
     function getPercentProgressBar(answeredCount, total) {
@@ -320,6 +356,5 @@ $(document).ready(function () {
     }
 
     loadCollection(collection);
-    // rename function
-    applyEvents();
+    answerListApplyListener();
 });
