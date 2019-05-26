@@ -2,12 +2,12 @@ $(document).ready(function () {
     let interval = null;
 
     function initComponents() {
-        setupModal("Let's Start the Quiz", 'far fa-4x fa-clock', 'You have 20 Minutes',
-            'START', 'btn btn-outline-primary waves-effect start');
-        $('#start-modal').modal({
-            backdrop: 'static',
-            keyboard: false
-        }, 'show')
+        // setupModal("Let's Start the Quiz", 'far fa-4x fa-clock', 'You have 20 Minutes',
+        //     'START', 'btn btn-outline-primary waves-effect start');
+        // $('#start-modal').modal({
+        //     backdrop: 'static',
+        //     keyboard: false
+        // }, 'show')
     }
 
     initComponents();
@@ -49,8 +49,8 @@ $(document).ready(function () {
         }, 1000);
     }
 
-    $(document).on('click', '.continue', () => {
-        // alert("CONTINUE")
+    $(document).on('click', '.calculate', () => {
+        alert("CONTINUE")
     });
 
     $(document).on('click', '.start', () => {
@@ -63,30 +63,31 @@ $(document).ready(function () {
      */
     const collection = {
         collectionId: 1,
-        questionList: [{
-            questionDescription: "What is A?",
-            answerList: [
-                {
-                    answerDescription: "A",
-                    isCorrect: true,
-                },
+        questionList: [
+            {
+                questionDescription: "What is A?",
+                answerList: [
+                    {
+                        answerDescription: "A",
+                        isCorrect: true,
+                    },
 
-                {
-                    answerDescription: "B",
-                    isCorrect: false,
-                },
+                    {
+                        answerDescription: "B",
+                        isCorrect: false,
+                    },
 
-                {
-                    answerDescription: "C",
-                    isCorrect: false,
-                },
+                    {
+                        answerDescription: "C",
+                        isCorrect: false,
+                    },
 
-                {
-                    answerDescription: "D",
-                    isCorrect: false,
-                },
-            ],
-        },
+                    {
+                        answerDescription: "D",
+                        isCorrect: false,
+                    },
+                ],
+            },
 
             {
                 questionDescription: "What is B?",
@@ -136,7 +137,55 @@ $(document).ready(function () {
                         isCorrect: false,
                     },
                 ],
-            }
+            },
+            {
+                questionDescription: "What is D?",
+                answerList: [
+                    {
+                        answerDescription: "A",
+                        isCorrect: false,
+                    },
+
+                    {
+                        answerDescription: "B",
+                        isCorrect: false,
+                    },
+
+                    {
+                        answerDescription: "C",
+                        isCorrect: false,
+                    },
+
+                    {
+                        answerDescription: "D",
+                        isCorrect: true,
+                    },
+                ],
+            },
+            {
+                questionDescription: "What is E?",
+                answerList: [
+                    {
+                        answerDescription: "E",
+                        isCorrect: true,
+                    },
+
+                    {
+                        answerDescription: "B",
+                        isCorrect: false,
+                    },
+
+                    {
+                        answerDescription: "C",
+                        isCorrect: false,
+                    },
+
+                    {
+                        answerDescription: "D",
+                        isCorrect: false,
+                    },
+                ],
+            },
         ],
     };
 
@@ -185,6 +234,7 @@ $(document).ready(function () {
             questionListDiv.appendChild(questionItemDiv);
 
             let radios = document.querySelectorAll('input[type=radio][name="question_' + i + '" ]');
+
             function changeHandler(event) {
                 // if (this.value === '') {
                 //     alert("Correct")
@@ -200,6 +250,33 @@ $(document).ready(function () {
             });
             i++;
         }
+
+        // for(let question of questionList){
+        //
+        //     for(let answer of question.answerList){
+        //         $('#questionList').append( "<div class=\"question question-item\" id=\"question_id_0\">" +
+        //             "<div id=\"questionDescription_0\">What is A?</div>" +
+        //             "<div id=\"answerList_0\">" +
+        //             "<div class=\"form-check form-check-answer\">" +
+        //             "<input type=\"radio\" class=\"form-check-input\" value=\"A\" name=\"question_0\" id=\"answer_0_0\">" +
+        //             "<label class=\"form-check-label\">A</label>" +
+        //             "</div>" +
+        //             "<div class=\"form-check form-check-answer\">" +
+        //             "<input type=\"radio\" class=\"form-check-input\" value=\"B\" name=\"question_0\" id=\"answer_0_1\">" +
+        //             "<label class=\"form-check-label\">B</label>" +
+        //             "</div>" +
+        //             "<div class=\"form-check form-check-answer\">" +
+        //             "<input type=\"radio\" class=\"form-check-input\" value=\"C\" name=\"question_0\" id=\"answer_0_2\">" +
+        //             "<label class=\"form-check-label\">C</label>" +
+        //             "</div>" +
+        //             "<div class=\"form-check form-check-answer\">" +
+        //             "<input type=\"radio\" class=\"form-check-input\" value=\"D\" name=\"question_0\" id=\"answer_0_3\">" +
+        //             "<label class=\"form-check-label\">D</label></div></div></div>")
+        //
+        //     }
+        // }
+
+
     }
 
     loadCollection(collection);
