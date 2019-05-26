@@ -292,7 +292,7 @@ $(document).ready(function () {
                 answeredCount++;
         }
 
-        // clean right here
+        // set this line to view caller
         $('#questionActive').text(answeredCount);
 
         return answeredCount;
@@ -305,18 +305,13 @@ $(document).ready(function () {
 
         for(let item of answerListOnly) {
             for(let subitem of item.childNodes) {
-                subitem.firstChild.addEventListener('change', changeHandler);
-                subitem.lastChild.addEventListener('click', changeHandler);
+                $(subitem.firstChild).change(changeHandler);
+                $(subitem.firstChild).hover(mouseOverHandler, mouseLeaveHandler);
+
+                $(subitem.lastChild).click(changeHandler);
+                $(subitem.lastChild).hover(mouseOverHandler, mouseLeaveHandler);
             }
         }
-
-        // for (let i = 0; i < countQuestion; i++) {
-        //     let radios = $('input[type=radio][name="question_' + i + '"]');
-        //
-        //     Array.prototype.forEach.call(radios, function (radio) {
-        //         radio.addEventListener('change', changeHandler);
-        //     });
-        // }
     }
 
     function changeHandler(event) {
@@ -326,25 +321,62 @@ $(document).ready(function () {
         //     console.log('value', 'transfer');
         // }
 
-        if(this.tagName !== 'LABEL')
-            setHightlightSelectedAnswer(this.id, this.name);
+        if(this.tagName !== 'LABEL') {
+            setHightlightSelectedAnswer(this.id, this.name, event.type);
+        }
         else {
             let inputField = this.parentNode.firstChild;
-            setHightlightSelectedAnswer(inputField.id, inputField.name);
-
+            setHightlightSelectedAnswer(inputField.id, inputField.name, event.type);
             inputField.checked = true;
         }
 
         setProgressBar(getPercentProgressBar(getAnsweredQuestionCount(), totalQuestion));
     }
 
-    function setHightlightSelectedAnswer(selectedId, selectedName) {
+    function mouseOverHandler(event) {
+        if(this.tagName !== 'LABEL') {
+            setHightlightSelectedAnswer(this.id, this.name, event.type);
+        }
+        else {
+            let inputField = this.parentNode.firstChild;
+            setHightlightSelectedAnswer(inputField.id, inputField.name, event.type);
+        }
+    }
+
+    function mouseLeaveHandler(event) {
+        console.log(event.target);
+        if(this.tagName !== 'LABEL') {
+            setHightlightSelectedAnswer(this.id, this.name, event.type);
+        }
+        else {
+            let inputField = this.parentNode.firstChild;
+            setHightlightSelectedAnswer(inputField.id, inputField.name, event.type);
+        }
+    }
+
+    function setHightlightSelectedAnswer(selectedId, selectedName, eventType) {
         let selectedGroup = $(`input[name="${selectedName}"]`);
         for(let item of selectedGroup) {
-            if(item.parentElement.classList.contains('default-color'))
-               item.parentElement.classList.remove('default-color');
+            if(eventType === "click" || eventType === "change") {
+                if ($(item).parent().hasClass('default-color-dark'))
+                    $(item).parent().removeClass('default-color-dark');
+
+                $(`#${selectedId}`).parent().addClass('default-color-dark');
+            }
+            else if(eventType === "mouseenter") {
+                if ($(item).parent().hasClass('default-color-dark'))
+                    $(item).parent().removeClass('default-color-dark');
+
+                $(`#${selectedId}`).parent().addClass('default-color');
+                $(`input[name="${selectedName}"]:checked`).parent().addClass('default-color-dark');
+            }
+            else if(eventType === "mouseleave") {
+                if ($(item).parent().hasClass('default-color'))
+                    $(item).parent().removeClass('default-color');
+
+                $(`input[name="${selectedName}"]:checked`).parent().addClass('default-color-dark');
+            }
         }
-        $(`#${selectedId}`).parent().addClass('default-color');
     }
 
     function getPercentProgressBar(answeredCount, total) {
