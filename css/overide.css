@@ -19,8 +19,14 @@ a{
 .nav-item a{
     font-weight: bold;
     color: #40514E !important;
-    font-family: 'Hanuman', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .navbar-toggler{
     background-color: #40514E;
+}
+#down-arrow-blog{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-self: flex-end;
 }
