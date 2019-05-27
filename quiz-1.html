@@ -1,105 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <title>Material Design Bootstrap</title>
+        <!-- Font Awesome -->
+        <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        />
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet" />
+        <!-- Material Design Bootstrap -->
+        <link href="css/mdb.min.css" rel="stylesheet" />
+        <!-- Your custom styles (optional) -->
+        <link href="css/style.css" rel="stylesheet" />
+    </head>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Material Design Bootstrap</title>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- Material Design Bootstrap -->
-    <link href="css/mdb.min.css" rel="stylesheet">
-    <!-- Your custom styles (optional) -->
-    <link href="css/style.css" rel="stylesheet">
-</head>
-
-<body>
-
-<!-- Start your project here-->
-<div class="container-fluid">
-</div>
-
-<div class="container-fluid pt-2 pb-2 fixed-bottom" id="timer">
-    <div class="row">
-        <div class="col col-md-6">
+    <body>
+        <!-- Start your project here-->
+        <div class="container-fluid">
             <div class="row">
-                <div class="col-md-6 col-sm-6 col-12 text-right ">
-                    <span><span id="questionActive">0</span> of <span id="questionCount">20</span> answers</span>
+                <div class="col col-md-12">
+                    <div id="questionList">
+                    </div>
+                    <button class="btn btn-primary calculate">OK</button>
                 </div>
-                <div class="col-md-6 col-sm-6 text-right">
-                    <div class="progress" style="height: 10px; width: 50% ;margin-top: 7px">
-                        <div class="progress-bar" role="progressbar" style="height: 10px; width: 0%;" aria-valuenow="25"
-                             aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+
+            <!-- Modal Start -->
+            <div
+                class="modal fade"
+                id="start-modal"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+            >
+                <div
+                    class="modal-dialog modal-notify modal-info"
+                    role="document"
+                >
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <p class="heading lead"></p>
+                        </div>
+                        <!-- Body -->
+                        <div class="modal-body">
+                            <div class="text-center">
+                                <i class="far fa-4x fa-clock"></i>
+                                <!-- <i class="fa fa-clock-o fa-4x mb-3 animated rotateIn"></i> -->
+                                <p class="mt-2">00:00</p>
+                            </div>
+                        </div>
+                        <div class="modal-footer justify-content-center">
+                            <a
+                                class="btn btn-outline-primary waves-effect"
+                                data-dismiss="modal"
+                            ></a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col col-md-6">
+
+        <!-- /Start your project here-->
+
+        <div class="container-fluid pt-3 pb-1 fixed-bottom" id="timer">
             <div class="row">
-                <div class="col col-mg-6 text-right">
-                    <p id="clock" class="mr-2"></p>
+                <div class="col col-md-6">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-12 text-right ">
+                            <span>
+                                <span id="questionActive">
+                                    <!-- answered number -->
+                                    <!-- default value -->
+                                    0
+                                </span> 
+                                of
+                                <span id="questionCount">
+                                    <!-- total answers number -->
+                                    <!-- default value -->
+                                    0
+                                </span>
+                                answers
+                            </span>
+                        </div>
+                        <div class="col-md-6 col-sm-6 text-right">
+                            <div
+                                class="progress"
+                                style="height: 10px; width: 50% ;margin-top: 7px"
+                            >
+                                <div
+                                    id="progressBarAnswers"
+                                    class="progress-bar"
+                                    role="progressbar"
+                                    style="height: 10px; width: 0%;"
+                                    aria-valuenow="0"
+                                    aria-valuemin="0"
+                                    aria-valuemax="100"
+                                ></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col col-mg-6">
-                    <i class="far fa-clock"></i>
+                <div class="col col-md-6">
+                    <div class="row">
+                        <div class="col col-mg-6 text-right">
+                            <p id="clock" class="mr-2"></p>
+                        </div>
+                        <div class="col col-mg-6">
+                            <i class="far fa-clock"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<!--&lt;!&ndash; Footer &ndash;&gt;-->
-<!--<footer class="page-footer font-small blue fixed-bottom">-->
 
-<!--    &lt;!&ndash; Copyright &ndash;&gt;-->
-<!--    <div class="footer-copyright text-center py-3">© 2018 Copyright:-->
-<!--        <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>-->
-<!--    </div>-->
-<!--    &lt;!&ndash; Copyright &ndash;&gt;-->
+        <!--&lt;!&ndash; Footer &ndash;&gt;-->
+        <!--<footer class="page-footer font-small blue fixed-bottom">-->
 
-<!--</footer>-->
-<!--&lt;!&ndash; Footer &ndash;&gt;-->
+        <!--    &lt;!&ndash; Copyright &ndash;&gt;-->
+        <!--    <div class="footer-copyright text-center py-3">© 2018 Copyright:-->
+        <!--        <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>-->
+        <!--    </div>-->
+        <!--    &lt;!&ndash; Copyright &ndash;&gt;-->
 
-<!-- Modal Start -->
-<div class="modal modal-dialog modal-notify modal-info fade" id="start-modal" tabindex="-1" role="dialog"
-     aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <p class="heading lead">Let's Start the Quiz</p>
-            </div>
-            <!--Body-->
-            <div class="modal-body">
-                <div class="text-center">
-                    <i class="far fa-4x fa-clock"></i>
-                    <!--                        <i class="fa fa-clock-o fa-4x mb-3 animated rotateIn"></i>-->
-                    <p class="mt-2">You have <span>20</span> Minutes
-                    </p>
-                </div>
-            </div>
-            <div class="modal-footer justify-content-center">
-                <a class="btn btn-outline-primary waves-effect"
-                   data-dismiss="modal">Start</a>
-            </div>
-        </div>
-    </div>
+        <!--</footer>-->
+        <!--&lt;!&ndash; Footer &ndash;&gt;-->
 
-</div>
-<!-- /Start your project here-->
-
-<!-- SCRIPTS -->
-<!-- JQuery -->
-<script type="text/javascript" src="js/jquery-3.4.0.min.js"></script>
-<!-- Bootstrap tooltips -->
-<script type="text/javascript" src="js/popper.min.js"></script>
-<!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<!-- MDB core JavaScript -->
-<script type="text/javascript" src="js/mdb.min.js"></script>
-<script src="app/js/script.js"></script>
-<script src="app/js/quiz.js"></script>
-</body>
-
+        <!-- SCRIPTS -->
+        <!-- JQuery -->
+        <script type="text/javascript" src="js/jquery-3.4.0.min.js"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="js/popper.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="js/mdb.min.js"></script>
+        <script src="app/js/script.js"></script>
+        <script src="app/js/quiz.js"></script>
+    </body>
 </html>

@@ -1,16 +1,19 @@
-
 $(document).ready(function () {
     let interval = null;
+    let totalQuestion = 0;
 
     function initComponents() {
         setupModal("Let's Start the Quiz", 'far fa-4x fa-clock', 'You have 20 Minutes',
             'START', 'btn btn-outline-primary waves-effect start');
-        $('#start-modal').modal('show')
+        $('#start-modal').modal({
+            backdrop: 'static',
+            keyboard: false
+        }, 'show')
     }
 
     initComponents();
     $('.calculate-score').on('click', () => {
-       alert("Total Score");
+        alert("Total Score");
     });
 
     function setupModal(header, icon, text, button, buttonClass) {
@@ -24,11 +27,12 @@ $(document).ready(function () {
         clearInterval(interval);
         setupModal('Time up', 'far fa-4x fa-check-circle', 'Please check your result!',
             'CONTINUE', 'btn btn-warning waves-effect continue');
-        $('#start-modal').removeClass('modal-info').addClass('modal-warning').modal('show');
+        $('.modal-dialog').removeClass('modal-info').addClass('modal-warning').parent().modal('show');
     }
 
     function startTimer(duration, display) {
-        let timer = duration, minutes, seconds;
+        let timer = duration,
+            minutes, seconds;
         interval = setInterval(function () {
             minutes = parseInt(timer / 60, 10);
             seconds = parseInt(timer % 60, 10);
@@ -45,11 +49,344 @@ $(document).ready(function () {
 
         }, 1000);
     }
-$(document).on('click', '.continue' , () => {
-    alert("CONTINUE")
-});
-    $(document).on('click','.start', () => {
-        // alert();
-        startTimer(6 * 1, $('#clock'))
+
+    $(document).on('click', '.continue', () => {
+        // alert("CONTINUE")
     });
+
+    $(document).on('click', '.start', () => {
+        // alert();
+        startTimer(1 * 2, $('#clock'))
+    });
+
+    /**
+     *  dora part
+     */
+    function Collection(collectionId, questionList) {
+        this._collectionId = collectionId;
+        this._questionList = questionList;
+    }
+
+    function QuestionList(questionId, questionDescription, answerList) {
+        this._questionId = questionId;
+        this._questionDescription = questionDescription;
+        this._answerList = answerList;
+    }
+
+    function AnswerList(answerId, answerDescription, isCorrect) {
+        this._answerId = answerId;
+        this._answerDescription = answerDescription;
+        this._isCorrect = isCorrect;
+    }
+
+    const collection = {
+        collectionId: 0,
+        questionList: [{
+                questionId: 0,
+                questionDescription: "What is A?",
+                answerList: [{
+                        answerId: 0,
+                        answerDescription: "A",
+                        isCorrect: true,
+                    },
+
+                    {
+                        answerId: 1,
+                        answerDescription: "B",
+                        isCorrect: false,
+                    },
+
+                    {
+                        answerId: 2,
+                        answerDescription: "C",
+                        isCorrect: false,
+                    },
+
+                    {
+                        answerId: 3,
+                        answerDescription: "D",
+                        isCorrect: false,
+                    },
+                ],
+            },
+
+            {
+                questionId: 1,
+                questionDescription: "What is B?",
+                answerList: [{
+                        answerId: 0,
+                        answerDescription: "A",
+                        isCorrect: false,
+                    },
+
+                    {
+                        answerId: 1,
+                        answerDescription: "B",
+                        isCorrect: true,
+                    },
+
+                    {
+                        answerId: 2,
+                        answerDescription: "C",
+                        isCorrect: false,
+                    },
+
+                    {
+                        answerId: 3,
+                        answerDescription: "D",
+                        isCorrect: false,
+                    },
+                ],
+            },
+
+            {
+                questionId: 2,
+                questionDescription: "What is C?",
+                answerList: [{
+                        answerId: 0,
+                        answerDescription: "A",
+                        isCorrect: false,
+                    },
+
+                    {
+                        answerId: 1,
+                        answerDescription: "B",
+                        isCorrect: false,
+                    },
+
+                    {
+                        answerId: 2,
+                        answerDescription: "C",
+                        isCorrect: true,
+                    },
+
+                    {
+                        answerId: 3,
+                        answerDescription: "D",
+                        isCorrect: false,
+                    },
+                ],
+            },
+
+            {
+                questionId: 3,
+                questionDescription: "What is C?",
+                answerList: [{
+                        answerId: 0,
+                        answerDescription: "A",
+                        isCorrect: false,
+                    },
+
+                    {
+                        answerId: 1,
+                        answerDescription: "B",
+                        isCorrect: false,
+                    },
+
+                    {
+                        answerId: 2,
+                        answerDescription: "C",
+                        isCorrect: true,
+                    },
+
+                    {
+                        answerId: 3,
+                        answerDescription: "D",
+                        isCorrect: false,
+                    },
+                ],
+            },
+
+            {
+                questionId: 4,
+                questionDescription: "What is E?",
+                answerList: [{
+                        answerId: 0,
+                        answerDescription: "E",
+                        isCorrect: true,
+                    },
+
+                    {
+                        answerId: 1,
+                        answerDescription: "F",
+                        isCorrect: false,
+                    },
+
+                    {
+                        answerId: 2,
+                        answerDescription: "G",
+                        isCorrect: false,
+                    },
+
+                    {
+                        answerId: 3,
+                        answerDescription: "H",
+                        isCorrect: false,
+                    },
+                ],
+            },
+
+            {
+                questionId: 5,
+                questionDescription: "What is H?",
+                answerList: [{
+                        answerId: 0,
+                        answerDescription: "H",
+                        isCorrect: true,
+                    },
+
+                    {
+                        answerId: 1,
+                        answerDescription: "Z",
+                        isCorrect: false,
+                    },
+
+                    {
+                        answerId: 2,
+                        answerDescription: "X",
+                        isCorrect: true,
+                    },
+
+                    {
+                        answerId: 3,
+                        answerDescription: "C",
+                        isCorrect: false,
+                    },
+                ],
+            }
+        ],
+    };
+
+    function loadCollection(collection) {
+        let str = "";
+        let questionList = collection.questionList;
+
+        for (let question of questionList) {
+            str +=
+                `<div class=\"question question-item\" id=\"question_id_${question.questionId}\">` +
+                `<div id=\"questionDescription_${question.questionId}\">${question.questionDescription}</div>` +
+                `<div id=\"answerList_${question.questionId}\">`;
+
+            for (let answer of question.answerList) {
+                str +=
+                    `<div class=\"form-check form-check-answer\">` +
+                    `<input type=\"radio\" class=\"form-check-input\" value=\"${answer.answerDescription}\" name=\"question_${question.questionId}\" id=\"answer_${question.questionId}_${answer.answerId}\" is-correct=\"${answer.isCorrect}\">` +
+                    `<label class=\"form-check-label\">${answer.answerDescription}</label>` +
+                    `</div>`;
+            }
+
+            str += `</div></div>`;
+        }
+        document.getElementById('questionList').innerHTML = str;
+
+        // Get total question length
+        totalQuestion = parseInt($('#questionList').children().length);
+        $('#questionCount').text(totalQuestion);
+    }
+
+    function getAnsweredQuestionCount() {
+        let answeredCount = 0;
+        for (let i = 0; i < totalQuestion; i++) {
+            let question = $(`input[name='question_${i}']:checked`);
+            if (question.length === 1)
+                answeredCount++;
+        }
+
+        // set this line to view caller
+        $('#questionActive').text(answeredCount);
+
+        return answeredCount;
+    }
+
+    function answerListApplyListener() {
+        let questionListDiv = $('#questionList');
+        let questionItemList = questionListDiv.children();
+        let answerListOnly = questionItemList.children(':odd');
+
+        for(let item of answerListOnly) {
+            for(let subitem of item.childNodes) {
+                $(subitem.firstChild).change(changeHandler);
+                $(subitem.firstChild).hover(mouseOverHandler, mouseLeaveHandler);
+
+                $(subitem.lastChild).click(changeHandler);
+                $(subitem.lastChild).hover(mouseOverHandler, mouseLeaveHandler);
+            }
+        }
+    }
+
+    function changeHandler(event) {
+        // if (this.value === '') {
+        //     alert("Correct")
+        // } else if (this.value === 'transfer') {
+        //     console.log('value', 'transfer');
+        // }
+
+        if(this.tagName !== 'LABEL') {
+            setHightlightSelectedAnswer(this.id, this.name, event.type);
+        }
+        else {
+            let inputField = this.parentNode.firstChild;
+            setHightlightSelectedAnswer(inputField.id, inputField.name, event.type);
+            inputField.checked = true;
+        }
+
+        setProgressBar(getPercentProgressBar(getAnsweredQuestionCount(), totalQuestion));
+    }
+
+    function mouseOverHandler(event) {
+        if(this.tagName !== 'LABEL') {
+            setHightlightSelectedAnswer(this.id, this.name, event.type);
+        }
+        else {
+            let inputField = this.parentNode.firstChild;
+            setHightlightSelectedAnswer(inputField.id, inputField.name, event.type);
+        }
+    }
+
+    function mouseLeaveHandler(event) {
+        console.log(event.target);
+        if(this.tagName !== 'LABEL') {
+            setHightlightSelectedAnswer(this.id, this.name, event.type);
+        }
+        else {
+            let inputField = this.parentNode.firstChild;
+            setHightlightSelectedAnswer(inputField.id, inputField.name, event.type);
+        }
+    }
+
+    function setHightlightSelectedAnswer(selectedId, selectedName, eventType) {
+        let selectedGroup = $(`input[name="${selectedName}"]`);
+        for(let item of selectedGroup) {
+            if(eventType === "click" || eventType === "change") {
+                if ($(item).parent().hasClass('default-color-dark'))
+                    $(item).parent().removeClass('default-color-dark');
+
+                $(`#${selectedId}`).parent().addClass('default-color-dark');
+            }
+            else if(eventType === "mouseenter") {
+                if ($(item).parent().hasClass('default-color-dark'))
+                    $(item).parent().removeClass('default-color-dark');
+
+                $(`#${selectedId}`).parent().addClass('default-color');
+                $(`input[name="${selectedName}"]:checked`).parent().addClass('default-color-dark');
+            }
+            else if(eventType === "mouseleave") {
+                if ($(item).parent().hasClass('default-color'))
+                    $(item).parent().removeClass('default-color');
+
+                $(`input[name="${selectedName}"]:checked`).parent().addClass('default-color-dark');
+            }
+        }
+    }
+
+    function getPercentProgressBar(answeredCount, total) {
+        return answeredCount * 100 / total;
+    }
+
+    function setProgressBar(percent) {
+        $('#progressBarAnswers').attr('aria-valuenow', percent).css('width', percent + '%');
+    }
+
+    loadCollection(collection);
+    answerListApplyListener();
 });
