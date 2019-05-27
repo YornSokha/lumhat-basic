@@ -1,0 +1,26 @@
+body{
+    background: url("../img/main_image.jpg") no-repeat ;
+    position: relative;
+    font-family: 'Hanuman', sans-serif;
+    background-size: cover;
+}
+.info-color{
+    background-color:#FAFAFA !important;
+}
+.navbar{
+    box-shadow: none;
+}
+a{
+    color: black !important;
+}
+.nav-item a:hover{
+    color: #906161 !important;
+}
+.nav-item a{
+    font-weight: bold;
+    color: #40514E !important;
+    font-family: 'Hanuman', sans-serif;
+}
+.navbar-toggler{
+    background-color: #40514E;
+}
