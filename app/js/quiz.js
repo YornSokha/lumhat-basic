@@ -307,7 +307,6 @@ $(document).ready(function () {
             for(let subitem of item.childNodes) {
                 $(subitem).hover(mouseEnterHandler, mouseLeaveHandler);
                 $(subitem).click(mouseClickHandler);
-                // $(subitem).change(changeHandler);
             }
         }
     }
@@ -323,14 +322,6 @@ $(document).ready(function () {
     function mouseClickHandler(event) {
         let input = this.children.item(0);
         input.checked = true;
-    }
-
-    function changeHandler(event) {
-        // if (this.value === '') {
-        //     alert("Correct")
-        // } else if (this.value === 'transfer') {
-        //     console.log('value', 'transfer');
-        // }
         setProgressBar(getPercentProgressBar(getAnsweredQuestionCount(), totalQuestion));
     }
 
