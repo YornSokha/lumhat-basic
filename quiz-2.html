@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <meta
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>Material Design Bootstrap</title>
     <!-- Font Awesome -->
     <link
@@ -14,25 +14,78 @@
             href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
     />
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
     <!-- Material Design Bootstrap -->
-    <link href="css/mdb.min.css" rel="stylesheet"/>
+    <link href="css/mdb.min.css" rel="stylesheet" />
     <!-- Your custom styles (optional) -->
-    <link href="css/style.css" rel="stylesheet"/>
+    <link href="css/overide.css" rel="stylesheet">
+
+    <link href="css/style.css" rel="stylesheet" />
 </head>
 
 <body>
-
 <!-- Start your project here-->
+<div class="container-fluid" style="background-color:#FAFAFA !important">
+    <div class="container" style="padding-left:0px">
+        <!--Navbar -->
+        <nav class="mb-1 navbar navbar-expand-lg navbar-dark info-color">
+            <a class="navbar-brand" href="#"><img src="img/logo_lumhat.png" alt="" width="70px" height="45px">  </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">ទំព័រ​ដើម</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">ព័ត៌​មាន​វិទ្យា</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">អង់​គ្លេស</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">កូរ៉េ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">អំពីយើង</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><img src="img/ic_flag_cambodia.png" alt="" width="24px" height="24px"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><img src="img/ic_flag_us.png" alt="" width="24px" height="24px"></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-user-circle-o"></i><span>ចូលប្រើ</span></a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-info"
+                             aria-labelledby="navbarDropdownMenuLink-4">
+                            <a class="dropdown-item" href="#">ព័ត៌មាន​របស់ខ្ញុំ</a>
+                            <a class="dropdown-item" href="#">ចាក​ចេញ</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!--/.Navbar -->
+    </div>
+</div>
 <div class="container-fluid">
     <div class="row">
         <div class="col col-md-12">
+            <div class="sub-quiz-result" style="display: none;">
+                <p id="score">Score: <span id="result-score"></span>/<span id="full-score"></span></p>
+                <p id="time-finish-blog">Time: <span id="time-finish"></span></p>
+            </div>
             <div id="questionList">
             </div>
             <button class="btn btn-primary calculate">OK</button>
         </div>
     </div>
-
 
     <!-- Modal Start -->
     <div
@@ -43,7 +96,10 @@
             aria-labelledby="exampleModalLabel"
             aria-hidden="true"
     >
-        <div class="modal-dialog modal-notify modal-info" role="document">
+        <div
+                class="modal-dialog modal-notify modal-info"
+                role="document"
+        >
             <div class="modal-content">
                 <div class="modal-header">
                     <p class="heading lead"></p>
@@ -60,15 +116,12 @@
                     <a
                             class="btn btn-outline-primary waves-effect"
                             data-dismiss="modal"
-                            data-controls-modal="your_div_id" data-backdrop="static" data-keyboard="false"
-                    ></a
-                    >
+                    ></a>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 
 <!-- /Start your project here-->
 
@@ -77,10 +130,20 @@
         <div class="col col-md-6">
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-12 text-right ">
-                            <span
-                            ><span id="questionActive">0</span> of
-                                <span id="questionCount">20</span> answers</span
-                            >
+                            <span>
+                                <span id="questionActive">
+                                    <!-- answered number -->
+                                    <!-- default value -->
+                                    0
+                                </span>
+                                of
+                                <span id="questionCount">
+                                    <!-- total answers number -->
+                                    <!-- default value -->
+                                    0
+                                </span>
+                                answers
+                            </span>
                 </div>
                 <div class="col-md-6 col-sm-6 text-right">
                     <div
@@ -88,10 +151,11 @@
                             style="height: 10px; width: 50% ;margin-top: 7px"
                     >
                         <div
+                                id="progressBarAnswers"
                                 class="progress-bar"
                                 role="progressbar"
                                 style="height: 10px; width: 0%;"
-                                aria-valuenow="25"
+                                aria-valuenow="0"
                                 aria-valuemin="0"
                                 aria-valuemax="100"
                         ></div>
@@ -135,5 +199,6 @@
 <script type="text/javascript" src="js/mdb.min.js"></script>
 <script src="app/js/script.js"></script>
 <script src="app/js/quiz.js"></script>
+<script src="app/js/answer.js"></script>
 </body>
 </html>

@@ -11,7 +11,7 @@ $(document).ready(function () {
         }, 'show')
     }
 
-    initComponents();
+    // initComponents();
     $('.calculate-score').on('click', () => {
         alert("Total Score");
     });
