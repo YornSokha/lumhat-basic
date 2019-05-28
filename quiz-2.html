@@ -76,7 +76,7 @@
     </div>
 </div>
 <div class="content">
-    <div class="container-fluid mb-5">
+    <div class="container-fluid">
         <div class="row">
             <div class="col col-md-12">
                 <div class="sub-quiz-result" style="display: none;">
@@ -85,7 +85,15 @@
                 </div>
                 <div id="questionList">
                 </div>
-                <button class="btn btn-primary calculate">OK</button>
+                <div class="text-center done-blog">
+                    <button type="button" id="btn-done" class="btn btn-result waves-effect waves-light calculate" data-toggle="modal" data-target="#modalPush" style="display: inline-block;">DONE</button>
+
+                    <!--TODO: SHOW THESE BUTTON WHEN FINISH QUIZ-->
+                    <a class="btn btn-result waves-effect waves-light" id="btn-quiz" style="color: white; display: none;" href="/profile">Quiz</a>
+                    <a class="btn btn-result waves-effect waves-light" id="btn-profile" style="color: white; display: none;" href="/profile">Profile</a>
+                    <a class="btn btn-result waves-effect waves-light" id="btn-home" style="color: white; display: none;" href="/home">Home</a>
+
+                </div>
             </div>
         </div>
 

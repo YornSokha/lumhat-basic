@@ -3,6 +3,13 @@ $(document).ready(function () {
     let answeredCount = 0;
     let correctAnswer = 0;
     let totalQuestion;
+
+    function modifyButton(){
+        $('.calculate').css('display','none');
+        $('#btn-home').css('display', 'inline-block');
+        $('#btn-profile').css('display', 'inline-block');
+    }
+
    $(document).on('click', '.calculate', () =>{
        // $('#stop-modal').modal('show')
        // Get total question length
@@ -18,7 +25,7 @@ $(document).ready(function () {
                }
            }
        }
-
+        modifyButton();
        $('.sub-quiz-result').css('display','inherit');
        $('#result-score').text(correctAnswer);
        $('#full-score').text(totalQuestion);
