@@ -305,78 +305,24 @@ $(document).ready(function () {
 
         for(let item of answerListOnly) {
             for(let subitem of item.childNodes) {
-                $(subitem.firstChild).change(changeHandler);
-                $(subitem.firstChild).hover(mouseOverHandler, mouseLeaveHandler);
-
-                $(subitem.lastChild).click(changeHandler);
-                $(subitem.lastChild).hover(mouseOverHandler, mouseLeaveHandler);
+                $(subitem).hover(mouseEnterHandler, mouseLeaveHandler);
+                $(subitem).click(mouseClickHandler);
             }
         }
     }
 
-    function changeHandler(event) {
-        // if (this.value === '') {
-        //     alert("Correct")
-        // } else if (this.value === 'transfer') {
-        //     console.log('value', 'transfer');
-        // }
-
-        if(this.tagName !== 'LABEL') {
-            setHightlightSelectedAnswer(this.id, this.name, event.type);
-        }
-        else {
-            let inputField = this.parentNode.firstChild;
-            setHightlightSelectedAnswer(inputField.id, inputField.name, event.type);
-            inputField.checked = true;
-        }
-
-        setProgressBar(getPercentProgressBar(getAnsweredQuestionCount(), totalQuestion));
-    }
-
-    function mouseOverHandler(event) {
-        if(this.tagName !== 'LABEL') {
-            setHightlightSelectedAnswer(this.id, this.name, event.type);
-        }
-        else {
-            let inputField = this.parentNode.firstChild;
-            setHightlightSelectedAnswer(inputField.id, inputField.name, event.type);
-        }
+    function mouseEnterHandler(event) {
+        $(this).addClass("default-color");
     }
 
     function mouseLeaveHandler(event) {
-        console.log(event.target);
-        if(this.tagName !== 'LABEL') {
-            setHightlightSelectedAnswer(this.id, this.name, event.type);
-        }
-        else {
-            let inputField = this.parentNode.firstChild;
-            setHightlightSelectedAnswer(inputField.id, inputField.name, event.type);
-        }
+        $(this).removeClass("default-color");
     }
 
-    function setHightlightSelectedAnswer(selectedId, selectedName, eventType) {
-        let selectedGroup = $(`input[name="${selectedName}"]`);
-        for(let item of selectedGroup) {
-            if(eventType === "click" || eventType === "change") {
-                if ($(item).parent().hasClass('default-color-dark'))
-                    $(item).parent().removeClass('default-color-dark');
-
-                $(`#${selectedId}`).parent().addClass('default-color-dark');
-            }
-            else if(eventType === "mouseenter") {
-                if ($(item).parent().hasClass('default-color-dark'))
-                    $(item).parent().removeClass('default-color-dark');
-
-                $(`#${selectedId}`).parent().addClass('default-color');
-                $(`input[name="${selectedName}"]:checked`).parent().addClass('default-color-dark');
-            }
-            else if(eventType === "mouseleave") {
-                if ($(item).parent().hasClass('default-color'))
-                    $(item).parent().removeClass('default-color');
-
-                $(`input[name="${selectedName}"]:checked`).parent().addClass('default-color-dark');
-            }
-        }
+    function mouseClickHandler(event) {
+        let input = this.children.item(0);
+        input.checked = true;
+        setProgressBar(getPercentProgressBar(getAnsweredQuestionCount(), totalQuestion));
     }
 
     function getPercentProgressBar(answeredCount, total) {
