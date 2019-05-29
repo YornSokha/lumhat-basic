@@ -19,10 +19,18 @@ $(document).ready(function () {
        $('#modal-done').modal('show');
     });
 
+    function setNewLayout(){
+        $('#modal-done').css('display', 'none');
+        $('#start-modal').css('display', 'none');
+        $('.modal-backdrop').remove();
+        $('.quiz-title').css('display', 'none');
+        $('body,html').animate({
+            scrollTop: 0
+        }, 1000);
+    }
 
     $(document).on('click', '.calculate', () => {
-        $('#modal-done').modal('hide');
-        $('.modal-backdrop').remove();
+        setNewLayout();
         stopTime = Date.now();
         let miliUsed = stopTime - startTime;
         // console.log(millisToMinutesAndSeconds(miliUsed));

@@ -20,7 +20,7 @@
     });
 
     function setupModal(header, icon, text, button, buttonClass) {
-        $('.modal-content > .modal-header > p').text(header);
+        $('.modal-content > .modal-header > .lead').text(header);
         $('.modal-content > .modal-body > div > p').text(text);
         $('.modal-content > .modal-body > div > i').attr('class', icon);
         $('.modal-content > .justify-content-center > a').attr('class', buttonClass).text(button);
@@ -61,7 +61,7 @@
 
     $(document).on('click', '.start', () => {
         // alert();
-        startTimer(5 , $('#clock'))
+        startTimer(20 * 60 , $('#clock'))
     });
 
     /**
