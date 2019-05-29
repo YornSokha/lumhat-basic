@@ -1,6 +1,9 @@
-$(document).ready(function () {
+// $(document).ready(function () {
     let interval = null;
     let totalQuestion = 0;
+
+    let startTime;
+    let stopTime
 
     function initComponents() {
         setupModal("Let's Start the Quiz", 'far fa-4x fa-clock', 'You have 20 Minutes',
@@ -11,7 +14,7 @@ $(document).ready(function () {
         }, 'show')
     }
 
-    // initComponents();
+    initComponents();
     $('.calculate-score').on('click', () => {
         alert("Total Score");
     });
@@ -31,6 +34,8 @@ $(document).ready(function () {
     }
 
     function startTimer(duration, display) {
+        startTime = Date.now();
+        console.log(startTime);
         let timer = duration,
             minutes, seconds;
         interval = setInterval(function () {
@@ -50,13 +55,13 @@ $(document).ready(function () {
         }, 1000);
     }
 
-    $(document).on('click', '.continue', () => {
-        // alert("CONTINUE")
-    });
+    // $(document).on('click', '.continue', () => {
+    //     // alert("CONTINUE")
+    // });
 
     $(document).on('click', '.start', () => {
         // alert();
-        startTimer(1 * 2, $('#clock'))
+        startTimer(60 * 2, $('#clock'))
     });
 
     /**
@@ -389,4 +394,4 @@ $(document).ready(function () {
 
     loadCollection(collection);
     answerListApplyListener();
-});
+// });

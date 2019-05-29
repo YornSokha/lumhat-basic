@@ -10,7 +10,17 @@ $(document).ready(function () {
         $('#btn-profile').css('display', 'inline-block');
     }
 
+    function millisToMinutesAndSeconds(millis) {
+        var minutes = Math.floor(millis / 60000);
+        var seconds = ((millis % 60000) / 1000).toFixed(0);
+        return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+    }
+
    $(document).on('click', '.calculate', () =>{
+       stopTime = Date.now();
+       let miliUsed = stopTime - startTime;
+       $('#time-finish-blog').text(millisToMinutesAndSeconds(miliUsed + 's'));
+       clearInterval(interval);
        // $('#stop-modal').modal('show')
        // Get total question length
        totalQuestion = parseInt($('#questionList').children().length);
@@ -29,6 +39,7 @@ $(document).ready(function () {
        $('.sub-quiz-result').css('display','inherit');
        $('#result-score').text(correctAnswer);
        $('#full-score').text(totalQuestion);
+       $('#timer').css('display', 'none');
 
    }) ;
 });
