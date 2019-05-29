@@ -7,8 +7,9 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Material Design Bootstrap</title>
     <!-- Font Awesome -->
-    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Bootstrap core CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Hanuman" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
     <link href="css/mdb.min.css" rel="stylesheet">
@@ -20,151 +21,224 @@
 
 <body>
     <!--================= Header =================-->
+    <div style="background: url('img/main_image.jpg');background-position: center; background-repeat:no-repeat;background-size: cover;width: 100%;height: 100%;">
     <div class="container-fluid" style="background-color:#FAFAFA !important">
-        <div class="container" style="padding-left:0px">
-            <!--Navbar -->
-            <!-- <nav class="mb-1 navbar fixed-top navbar-expand-lg navbar-dark info-color"> -->
-                <nav class="navbar navbar-expand-lg navbar-light fixed-top scrolling-navbar white top-nav-collapse">
-                <a class="navbar-brand" href="#"><img src="img/logo_lumhat.png" alt="" width="70px" height="45px">  </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4"
-                    aria-expanded="false" aria-label="Toggle navigation">
+        <!--================= Menu =================-->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top scrolling-navbar white top-nav-collapse">
+            <div class="container" style="padding-left:0px">
+                <a class="navbar-brand" href="/home">
+                    <img src="img/logo_lumhat.png" height="40" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7" aria-controls="navbarSupportedContent-7"
+                        aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
-                    <ul class="navbar-nav ml-auto">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
+                    <ul class="navbar-nav ml-auto menu-list">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">ទំព័រ​ដើម</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">ព័ត៌​មាន​វិទ្យា</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">អង់​គ្លេស</a>
+                            <a class="nav-link" href="/home"><span>ទំព័រ​ដើម</span>
+                                <span class="sr-only">(current)</span>
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">កូរ៉េ</a>
+                            <a class="nav-link" href="/category?major_id=1"><span>ព័ត៌​មាន​វិទ្យា</span></a>
                         </li>
+    
                         <li class="nav-item">
-                            <a class="nav-link" href="#">អំពីយើង</a>
+                            <a class="nav-link" href="/category?major_id=2"><span>អង់​គ្លេស</span></a>
                         </li>
+    
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><img src="img/ic_flag_cambodia.png" alt="" width="24px" height="24px"></a>
+                            <a class="nav-link" href="/category?major_id=3"><span>កូរ៉េ</span></a>
                         </li>
+    
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><img src="img/ic_flag_us.png" alt="" width="24px" height="24px"></a>
+                            <a class="nav-link" href="/about"><span>អំពី​​យើង</span></a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-user-circle-o"></i><span>ចូលប្រើ</span></a>
-                                <div class="dropdown-menu dropdown-menu-right dropdown-info"
-                                    aria-labelledby="navbarDropdownMenuLink-4">
-                                    <a class="dropdown-item" href="#">ព័ត៌មាន​របស់ខ្ញុំ</a>
-                                    <a class="dropdown-item" href="#">ចាក​ចេញ</a>
-                                </div>
+    
+                        <li class="nav-item">
+                            <a class="nav-link" id="langkm"><img src="img/ic_flag_us.png" height="24px" alt=""></a>
                         </li>
+    
+                        <li class="nav-item">
+                            <a class="nav-link" id="langen"><img src="img/ic_flag_cambodia.png" height="24px" alt=""></a>
+                        </li>
+    
+                        <div>
+                            <li class="nav-item">
+                                <a class="nav-link "  href="/facebook/signin" aria-expanded="false" >
+                                    <span ><i class="fa fa-user-circle-o login"></i><span>ចូលប្រើ</span></span>
+                                </a>
+                            </li>
+                        </div>
                     </ul>
                 </div>
-            </nav>
-            <!--/.Navbar -->
-        </div>
+            </div>
+        </nav>
+        <!--================= End Menu =================-->
     </div>
-    <div style="background: url('img/main_image.jpg') no-repeat;background-size: cover;background-color: pink;width: 100%;height:100%;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12  white-text text-center">
-                    <h1 class="display-3 mb-0 pt-md-5 pt-5 white-text font-weight-bold wow fadeInDown" data-wow-delay="0.3s">
-                            <span>លំ</span><span class="hat teal-text lighten-4 font-weight-bold">ហាត់</span>
-                    </h1>
-                    <h5 class="text-uppercase pt-md-5 pt-sm-2 pt-5 pb-md-5 pb-sm-3 pb-5 white-text font-weight-bold wow fadeInDown" data-wow-delay="0.3s"><span>ធ្វើ​តេស្ត​សមត្ថភាព​របស់​អ្នក​ជាមួយ​ “លំហាត់”</span></h5>
+        <div style="height: 100%">
+            <div class="mask d-flex justify-content-center align-items-center" style="height: 100%">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 white-text text-center">
+                            <h1 class="display-3 mb-0 pt-md-5 pt-5 white-text font-weight-bold wow fadeInDown" data-wow-delay="0.3s"><span>លំ</span><span class="hat teal-text lighten-4 font-weight-bold">ហាត់</span>
+                            </h1>
+                            <h5 class="text-uppercase pt-md-5 pt-sm-2 pt-5 pb-md-5 pb-sm-3 pb-5 white-text font-weight-bold wow fadeInDown" data-wow-delay="0.3s"><span>ធ្វើ​តេស្ត​សមត្ថភាព​របស់​អ្នក​ជាមួយ​ “លំហាត់”</span></h5>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+    <div id="down-arrow-blog" style="position:absolute;bottom:0%">
+        <a href="#content"><img src="img/down-arrow.png" id="down-arrow" alt=""></a>
     </div>
-    <div id="down-arrow-blog">
-        <img src="img/down-arrow.png" id="down-arrow" alt="">
     </div>
-    </div>
-        
-    <!--================= End Menu =================-->
+    <!--================= End Header =================-->
 
-    <!--================= contain =================-->
-    <!-- <div class="content">
+    <!--================= Content =================-->
+    <div id="content" >
         <div class="container">
-            <div>
-                <section class="my-5">
-                    <h2 class="h1-responsive font-weight-bold text-center"><span>សាក​ល្បង​តេស្ត Online</span></h2>
-                    <p class="lead grey-text text-center w-responsive mx-auto mb-5"><span class="lumhat-sentence">សាកល្បង​ឥឡូវ​នេះ​ដើម្បី​មើល​ថា​តើអ្ន​ក​អាច​ធ្វើ​បាន​យ៉ាង​ដូចម្តេច...</span></p>
+            <section class="my-5">
+                <h2 class="h1-responsive font-weight-bold text-center"><span>សាក​ល្បង​តេស្ត Online</span></h2>
+                <p class="lead grey-text text-center w-responsive mx-auto mb-5"><span class="lumhat-sentence">សាកល្បង​ឥឡូវ​នេះ​ដើម្បី​មើល​ថា​តើអ្ន​ក​អាច​ធ្វើ​បាន​យ៉ាង​ដូចម្តេច...</span></p>
+                    <div class="row">
+                    <div class="col-md-4 mb-md-0 mb-5 ">
                         <div class="row">
-                        <div class="col-md-4 mb-md-0 mb-5 ">
-                            <div class="row">
-                                <div class="col-lg-2 col-md-3 col-2">
-                                    <img src="/img/ic_monitor.png" alt="" height="32px">
-                                </div>
-                                <div class="col-lg-10 col-md-9 col-10">
-                                    <h4 class="font-weight-bold"><span>ព័ត៌មាន​វិទ្យា</span></h4>
-                                    <p class="grey-text"><span>ផ្តល់​នូវ​សំណួរ​ជា​ច្រើន​ដែល​ទាក់​ទង​ទៅ​នឹង​ការ​សរសេរ​កូដ​កម្ម​វិធី និង​ការ​សរសេរ​កូដ​បង្កើត​គេហទំព័រ ។ ចុច​ប៊ូតុង​ខាង​ក្រោម ដើម្បី​ធ្វើ​ការ​សាកល្បង​តេស្ត​ជាមួយ​លំហាត់។</span></p>
-                                </div>
+                            <div class="col-lg-2 col-md-3 col-2">
+                                <img src="img/ic_monitor.png" alt="" height="32px">
                             </div>
-                            <sdiv class="row">
-                                <div class="col-md-12">
-                                    <div class="row">
-                                        <div class="col-lg-10 col-md-12 text-center col-10">
-                                            <a class="btn btn-primary btn-sm waves-effect waves-light" href="/category?major_id=1"><span class="text-category">ចាប់​ផ្តើម</span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </sdiv>
+                            <div class="col-lg-10 col-md-9 col-10">
+                                <h4 class="font-weight-bold"><span>ព័ត៌មាន​វិទ្យា</span></h4>
+                                <p class="grey-text"><span>ផ្តល់​នូវ​សំណួរ​ជា​ច្រើន​ដែល​ទាក់​ទង​ទៅ​នឹង​ការ​សរសេរ​កូដ​កម្ម​វិធី និង​ការ​សរសេរ​កូដ​បង្កើត​គេហទំព័រ ។ ចុច​ប៊ូតុង​ខាង​ក្រោម ដើម្បី​ធ្វើ​ការ​សាកល្បង​តេស្ត​ជាមួយ​លំហាត់។</span></p>
+                            </div>
                         </div>
-                        <div class="col-md-4 mb-md-0 mb-5">
-                            <div class="row">
-                                <div class="col-lg-2 col-md-3 col-2">
-                                    <img src="/img/img_english.png" alt="" height="32px">
-                                </div>
-                                <div class="col-lg-10 col-md-9 col-10">
-                                    <h4 class="font-weight-bold"><span>ភាសាអង់គ្លេស</span></h4>
-                                    <p class="grey-text"><span>បង្កើន​សមត្ថភាព​ភាសាអង់គ្លេស​របស់​អ្នក​ជាមួយ​នឹង​លំហាត់។ ការ​តេស្ត​សមត្ថភាព​ទូទៅ និង​វិញ្ញាសា​ប្រឡង​ផ្សេងៗ​គឺ​មាន​នៅ​ទីនេះ។ ចុច​ប៊ូតុង​ខាង​ក្រោម​ដើម្បី​ធ្វើ​ការ​សាកល្បង​តេស្ត។ </span></p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="row">
-                                        <div class="col-lg-10 col-md-12 text-center col-10">
-                                            <a class="btn btn-pink btn-sm waves-effect waves-light" href="/category?major_id=2"><span class="text-category">ចាប់​ផ្តើម</span></a>
-                                        </div>
+                        <sdiv class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-lg-10 col-md-12 text-center col-10">
+                                        <a class="btn btn-primary btn-sm waves-effect waves-light" href="/category?major_id=1"><span class="text-category">ចាប់​ផ្តើម</span></a>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="row">
-                                <div class="col-lg-2 col-md-3 col-2">
-                                    <img src="/img/img_korea.png" alt="" height="32px">
-                                </div>
-                                <div class="col-lg-10 col-md-9 col-10">
-                                    <h4 class="font-weight-bold"><span>ភាសាកូរ៉េ</span></h4>
-                                    <p class="grey-text"><span>ត្រៀម​លក្ខណៈ​សម្រាប់​ការ​ប្រឡង​តេស្ត​សមត្ថភាព​របស់​អ្នក​ជាមួយ​ភាសាកូរ៉េ(TOPIK)​​ និង Employment Permit System (EPS TOPIK) ជាមួយ​នឹង​លំហាត់។</span></p>
-                                </div>
+                        </sdiv>
+                    </div>
+                    <div class="col-md-4 mb-md-0 mb-5">
+                        <div class="row">
+                            <div class="col-lg-2 col-md-3 col-2">
+                                <img src="img/img_english.png" alt="" height="32px">
                             </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12 text-center col-10">
-                                            <a class="btn btn-purple btn-sm waves-effect waves-light" href="/category?major_id=3"><span class="text-category">ចាប់​ផ្តើម</span></a>
-                                        </div>
+                            <div class="col-lg-10 col-md-9 col-10">
+                                <h4 class="font-weight-bold"><span>ភាសាអង់គ្លេស</span></h4>
+                                <p class="grey-text"><span>បង្កើន​សមត្ថភាព​ភាសាអង់គ្លេស​របស់​អ្នក​ជាមួយ​នឹង​លំហាត់។ ការ​តេស្ត​សមត្ថភាព​ទូទៅ និង​វិញ្ញាសា​ប្រឡង​ផ្សេងៗ​គឺ​មាន​នៅ​ទីនេះ។ ចុច​ប៊ូតុង​ខាង​ក្រោម​ដើម្បី​ធ្វើ​ការ​សាកល្បង​តេស្ត។ </span></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-lg-10 col-md-12 text-center col-10">
+                                        <a class="btn btn-pink btn-sm waves-effect waves-light" href="/category?major_id=2"><span class="text-category">ចាប់​ផ្តើម</span></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </section>
-            </div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-lg-2 col-md-3 col-2">
+                                <img src="img/img_korea.png" alt="" height="32px">
+                            </div>
+                            <div class="col-lg-10 col-md-9 col-10">
+                                <h4 class="font-weight-bold"><span>ភាសាកូរ៉េ</span></h4>
+                                <p class="grey-text"><span>ត្រៀម​លក្ខណៈ​សម្រាប់​ការ​ប្រឡង​តេស្ត​សមត្ថភាព​របស់​អ្នក​ជាមួយ​ភាសាកូរ៉េ(TOPIK)​​ និង Employment Permit System (EPS TOPIK) ជាមួយ​នឹង​លំហាត់។</span></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 text-center col-10">
+                                        <a class="btn btn-purple btn-sm waves-effect waves-light" href="/category?major_id=3"><span class="text-category">ចាប់​ផ្តើម</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
-    </div> -->
-
+    </div>
+    <!--================= End Content =================-->
+    <!--================= Footer =================-->
+    <img class="footer-img" src="img/img_footer.png" alt="" width="100%">
+    <footer class="page-footer font-small mdb-color pt-4" id="footer-blog">
+            <div class="container text-center text-md-left">
+                <div class="row text-center text-md-left mt-3">
+                    <div class="col-md-4 col-lg-4 col-xl-4 mx-auto">
+                        <img src="img/lumhat-white.png" class="img-foot-logo" alt="" width="100px" height="55px">
+                        <div class=" pt-1">
+                            <p class="lumhat-text">វេប​សាយ លំហាត់ គឺ​ជា​វេទិកា​សំរាប់​សាកល្បង​ចំនេះ​ដឹង​តាមរយៈ​បណ្តាញ​អ៊ីនធឺណេត​នៅ​កម្ពុជា។ លំហាត់​ត្រូវ​បាន​បង្កើត​ឡើង​ដោយ​មជ្ឈមណ្ឌល​​កូរ៉េ អេច​​ អ ​ឌី នៅឆ្នាំ ២០១៧ ។</p>
+                        </div>
+                    </div>
+                  <hr class="w-100 clearfix d-md-none">
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                        <h6 class="text-uppercase foot-content  font-weight-bold"><span>មុខវិជ្ជា​ទាំងអស់</span></h6>
+                        <div class="mt-4 pt-2">
+                            <p class="lumhat-text-p">
+                                <a href="/category?major_id=1"><span>ព័ត៌មាន​វិទ្យា</span></a>
+                            </p>
+                            <p class="lumhat-text-p">
+                                <a href="/category?major_id=2"><span>ភាសាអង់គ្លេស</span></a>
+                            </p>
+                            <p class="lumhat-text-p">
+                                <a href="/category?major_id=3"><span>ភាសាកូរ៉េ</span></a>
+                            </p>
+                        </div>
+                    </div>
+                    <hr class="w-100 clearfix d-md-none">
+                    <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                        <h6 class="text-uppercase mb-2 font-weight-bold foot-content"><span>ទំនាក់​ទំនង</span></h6>
+                        <div class="mt-4 pt-0">
+                            <p class="lumhat-text-p">
+                                <i class="fa fa-home mr-3"></i> <span>ផ្ទះលេខ ១២, ផ្លូវលេខ ៣២៣,សង្កាត់ បឹងកក់ ២,ខណ្ឌ ទួលគោក ,រាជធានីភ្នំពេញ</span></p>
+                            <a class="lumhat-text-p" href="mailto:info.kshrd@gmail.com">
+                                <i class="fa fa-envelope mr-3"></i> info.kshrd@gmail.com</a>
+                            <p class="lumhat-text-p">
+                                <i class="fa fa-phone mr-3"></i> (855)23 991 314</p>
+                        </div>
+                    </div>
+                    <hr class="w-100 clearfix d-md-none">
+        
+                    <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3 ">
+                        <h6 class="text-uppercase mb-4 font-weight-bold foot-content"><span>បណ្តាញ​សង្គម Facebook</span></h6>
+                        <div class="mt-4 pt-1">
+                            <iframe allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" title="fb:like_box Facebook Social Plugin" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fweb.facebook.com%2Flumhatonline%2F&amp;tabs=timeline&amp;width=250&amp;height=150&amp;small_header=true&amp;adapt_container_width=false&amp;hide_cover=false&amp;show_facepile=true&amp;appId=892019850988433" style="border: none; visibility: visible; width: 100%;" width="100px" height="1%" frameborder="0">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row d-flex align-items-center">
+                    <div class="col-md-7 col-lg-8">
+                        <p class="text-center text-md-left">© 2018 <span>រក្សា​សិទ្ធដោយ</span>:
+                            <a href="#">
+                                <strong> LUMHAT</strong>
+                            </a>
+                        </p>
+                    </div>
+                    <div class="col-md-5 col-lg-4 ml-lg-0">
+                        <div class="text-center text-md-right">
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="stop" class="scrollTop" style="">
+                    <a href="#"><img src="img/scrollToTop.png"></a>
+            </div>
+        </footer>
     <!-- SCRIPTS -->
     <!-- JQuery -->
+    
     <script type="text/javascript" src="js/jquery-3.4.0.min.js"></script>
     <!-- Bootstrap tooltips -->
     <script type="text/javascript" src="js/popper.min.js"></script>
@@ -173,6 +247,17 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="js/mdb.min.js"></script>
     <script src="app/js/script.js"></script>
+    <script>
+            $(document).ready(function () {
+                $('.dropdown-submenu a.test').on("click", function (e) {
+                    $(this).next('ul').toggle();
+                    e.stopPropagation();
+                    e.preventDefault();
+                });      
+            });
+        </script>
+    <script src="js/category.js"></script>
+    <script src="js/home-script/home.js"></script>
 </body>
 
 </html>
