@@ -4,7 +4,7 @@ $(document).ready(function () {
     let totalQuestion;
 
     function modifyButton() {
-        $('.calculate').css('display', 'none');
+        $('#btn_done').css('display', 'none');
         $('#btn_home').css('display', 'inline-block');
         $('#btn_profile').css('display', 'inline-block');
     }
@@ -15,7 +15,14 @@ $(document).ready(function () {
         return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
     }
 
+    $(document).on('click', '#btn_done', () =>{
+       $('#modal-done').modal('show');
+    });
+
+
     $(document).on('click', '.calculate', () => {
+        $('#modal-done').modal('hide');
+        $('.modal-backdrop').remove();
         stopTime = Date.now();
         let miliUsed = stopTime - startTime;
         // console.log(millisToMinutesAndSeconds(miliUsed));
