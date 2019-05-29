@@ -1,19 +1,29 @@
 $(document).ready(function () {
-
     let answeredCount = 0;
     let correctAnswer = 0;
     let totalQuestion;
 
     function modifyButton(){
         $('.calculate').css('display','none');
-        $('#btn-home').css('display', 'inline-block');
-        $('#btn-profile').css('display', 'inline-block');
+        $('#btn_home').css('display', 'inline-block');
+        $('#btn_profile').css('display', 'inline-block');
+    }
+
+    function millisToMinutesAndSeconds(millis) {
+        var minutes = Math.floor(millis / 60000);
+        var seconds = ((millis % 60000) / 1000).toFixed(0);
+        return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
     }
 
    $(document).on('click', '.calculate', () =>{
+       stopTime = Date.now();
+       let miliUsed = stopTime - startTime;
+       console.log(millisToMinutesAndSeconds(miliUsed))
+       $('#time_finish_blog').text(millisToMinutesAndSeconds(miliUsed) + 's');
+       clearInterval(interval);
        // $('#stop-modal').modal('show')
        // Get total question length
-       totalQuestion = parseInt($('#questionList').children().length);
+       totalQuestion = parseInt($('#question_list').children().length);
        console.log("Total q :" + totalQuestion);
        for (let i = 0; i < totalQuestion; i++) {
            let question = $(`input[name='question_${i}']:checked`);
@@ -27,8 +37,10 @@ $(document).ready(function () {
        }
         modifyButton();
        $('.sub-quiz-result').css('display','inherit');
-       $('#result-score').text(correctAnswer);
-       $('#full-score').text(totalQuestion);
-
+       $('#result_score').text(correctAnswer);
+       $('#full_score').text(totalQuestion);
+       $('#timer').css('display', 'none');
+       $('div').unbind();
+       $('input:radio').attr('disabled',true);
    }) ;
 });

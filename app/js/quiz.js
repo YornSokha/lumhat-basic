@@ -1,6 +1,9 @@
-$(document).ready(function () {
+// $(document).ready(function () {
     let interval = null;
     let totalQuestion = 0;
+
+    let startTime;
+    let stopTime;
 
     function initComponents() {
         setupModal("Let's Start the Quiz", 'far fa-4x fa-clock', 'You have 20 Minutes',
@@ -11,7 +14,7 @@ $(document).ready(function () {
         }, 'show')
     }
 
-    // initComponents();
+    initComponents();
     $('.calculate-score').on('click', () => {
         alert("Total Score");
     });
@@ -31,6 +34,8 @@ $(document).ready(function () {
     }
 
     function startTimer(duration, display) {
+        startTime = Date.now();
+        console.log(startTime);
         let timer = duration,
             minutes, seconds;
         interval = setInterval(function () {
@@ -50,13 +55,13 @@ $(document).ready(function () {
         }, 1000);
     }
 
-    $(document).on('click', '.continue', () => {
-        // alert("CONTINUE")
-    });
+    // $(document).on('click', '.continue', () => {
+    //     // alert("CONTINUE")
+    // });
 
     $(document).on('click', '.start', () => {
         // alert();
-        startTimer(1 * 2, $('#clock'))
+        startTimer(60 * 2, $('#clock'))
     });
 
     /**
@@ -277,11 +282,11 @@ $(document).ready(function () {
 
             str += `</div></div>`;
         }
-        document.getElementById('questionList').innerHTML = str;
+        document.getElementById('question_list').innerHTML = str;
 
         // Get total question length
-        totalQuestion = parseInt($('#questionList').children().length);
-        $('#questionCount').text(totalQuestion);
+        totalQuestion = parseInt($('#question_list').children().length);
+        $('#question_count').text(totalQuestion);
     }
 
     function getAnsweredQuestionCount() {
@@ -293,90 +298,36 @@ $(document).ready(function () {
         }
 
         // set this line to view caller
-        $('#questionActive').text(answeredCount);
+        $('#question_active').text(answeredCount);
 
         return answeredCount;
     }
 
     function answerListApplyListener() {
-        let questionListDiv = $('#questionList');
+        let questionListDiv = $('#question_list');
         let questionItemList = questionListDiv.children();
         let answerListOnly = questionItemList.children(':odd');
 
         for(let item of answerListOnly) {
             for(let subitem of item.childNodes) {
-                $(subitem.firstChild).change(changeHandler);
-                $(subitem.firstChild).hover(mouseOverHandler, mouseLeaveHandler);
-
-                $(subitem.lastChild).click(changeHandler);
-                $(subitem.lastChild).hover(mouseOverHandler, mouseLeaveHandler);
+                $(subitem).hover(mouseEnterHandler, mouseLeaveHandler);
+                $(subitem).click(mouseClickHandler);
             }
         }
     }
 
-    function changeHandler(event) {
-        // if (this.value === '') {
-        //     alert("Correct")
-        // } else if (this.value === 'transfer') {
-        //     console.log('value', 'transfer');
-        // }
-
-        if(this.tagName !== 'LABEL') {
-            setHightlightSelectedAnswer(this.id, this.name, event.type);
-        }
-        else {
-            let inputField = this.parentNode.firstChild;
-            setHightlightSelectedAnswer(inputField.id, inputField.name, event.type);
-            inputField.checked = true;
-        }
-
-        setProgressBar(getPercentProgressBar(getAnsweredQuestionCount(), totalQuestion));
-    }
-
-    function mouseOverHandler(event) {
-        if(this.tagName !== 'LABEL') {
-            setHightlightSelectedAnswer(this.id, this.name, event.type);
-        }
-        else {
-            let inputField = this.parentNode.firstChild;
-            setHightlightSelectedAnswer(inputField.id, inputField.name, event.type);
-        }
+    function mouseEnterHandler(event) {
+        $(this).addClass("default-color");
     }
 
     function mouseLeaveHandler(event) {
-        console.log(event.target);
-        if(this.tagName !== 'LABEL') {
-            setHightlightSelectedAnswer(this.id, this.name, event.type);
-        }
-        else {
-            let inputField = this.parentNode.firstChild;
-            setHightlightSelectedAnswer(inputField.id, inputField.name, event.type);
-        }
+        $(this).removeClass("default-color");
     }
 
-    function setHightlightSelectedAnswer(selectedId, selectedName, eventType) {
-        let selectedGroup = $(`input[name="${selectedName}"]`);
-        for(let item of selectedGroup) {
-            if(eventType === "click" || eventType === "change") {
-                if ($(item).parent().hasClass('default-color-dark'))
-                    $(item).parent().removeClass('default-color-dark');
-
-                $(`#${selectedId}`).parent().addClass('default-color-dark');
-            }
-            else if(eventType === "mouseenter") {
-                if ($(item).parent().hasClass('default-color-dark'))
-                    $(item).parent().removeClass('default-color-dark');
-
-                $(`#${selectedId}`).parent().addClass('default-color');
-                $(`input[name="${selectedName}"]:checked`).parent().addClass('default-color-dark');
-            }
-            else if(eventType === "mouseleave") {
-                if ($(item).parent().hasClass('default-color'))
-                    $(item).parent().removeClass('default-color');
-
-                $(`input[name="${selectedName}"]:checked`).parent().addClass('default-color-dark');
-            }
-        }
+    function mouseClickHandler(event) {
+        let input = this.children.item(0);
+        input.checked = true;
+        setProgressBar(getPercentProgressBar(getAnsweredQuestionCount(), totalQuestion));
     }
 
     function getPercentProgressBar(answeredCount, total) {
@@ -384,9 +335,9 @@ $(document).ready(function () {
     }
 
     function setProgressBar(percent) {
-        $('#progressBarAnswers').attr('aria-valuenow', percent).css('width', percent + '%');
+        $('#progressbar_answers').attr('aria-valuenow', percent).css('width', percent + '%');
     }
 
     loadCollection(collection);
     answerListApplyListener();
-});
+// });
