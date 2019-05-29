@@ -266,21 +266,23 @@
         let str = "";
         let questionList = collection.questionList;
 
+        let counter = 1;
         for (let question of questionList) {
             str +=
                 `<div class=\"question question-item\" id=\"question_id_${question.questionId}\">` +
-                `<div id=\"questionDescription_${question.questionId}\">${question.questionDescription}</div>` +
-                `<div id=\"answerList_${question.questionId}\">`;
+                `<div class=\"question-title\" id=\"question_description_${question.questionId}\">${counter}. ${question.questionDescription}</div>` +
+                `<div class=\"answer-list\" id=\"answer_list_${question.questionId}\">`;
 
             for (let answer of question.answerList) {
                 str +=
-                    `<div class=\"form-check form-check-answer\">` +
-                    `<input type=\"radio\" class=\"form-check-input\" value=\"${answer.answerDescription}\" name=\"question_${question.questionId}\" id=\"answer_${question.questionId}_${answer.answerId}\" is-correct=\"${answer.isCorrect}\">` +
-                    `<label class=\"form-check-label\">${answer.answerDescription}</label>` +
+                    `<div class=\"form-check form-check-answer answer-item\">` +
+                    `<input type=\"radio\" class=\"form-check-input radio-answer option-input radio\" value=\"${answer.answerDescription}\" name=\"question_${question.questionId}\" id=\"answer_${question.questionId}_${answer.answerId}\" is-correct=\"${answer.isCorrect}\">` +
+                    `<label class=\"label-answer form-check-label\">${answer.answerDescription}</label>` +
                     `</div>`;
             }
 
             str += `</div></div>`;
+            counter++;
         }
         document.getElementById('question_list').innerHTML = str;
 
