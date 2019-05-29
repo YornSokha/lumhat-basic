@@ -1,8 +1,9 @@
 body{
-    background: url("../img/main_image.jpg") no-repeat ;
-    position: relative;
-    font-family: 'Hanuman', sans-serif;
-    background-size: cover;
+    /* background: url("../img/main_image.jpg") no-repeat ; */
+    /* position: relative; */
+    /* font-family: 'Hanuman', sans-serif; */
+    /* background-size: cover; */
+
 }
 .info-color{
     background-color:#FAFAFA !important;
