@@ -3,7 +3,7 @@
     let totalQuestion = 0;
 
     let startTime;
-    let stopTime
+    let stopTime;
 
     function initComponents() {
         setupModal("Let's Start the Quiz", 'far fa-4x fa-clock', 'You have 20 Minutes',
@@ -282,11 +282,11 @@
 
             str += `</div></div>`;
         }
-        document.getElementById('questionList').innerHTML = str;
+        document.getElementById('question_list').innerHTML = str;
 
         // Get total question length
-        totalQuestion = parseInt($('#questionList').children().length);
-        $('#questionCount').text(totalQuestion);
+        totalQuestion = parseInt($('#question_list').children().length);
+        $('#question_count').text(totalQuestion);
     }
 
     function getAnsweredQuestionCount() {
@@ -298,13 +298,13 @@
         }
 
         // set this line to view caller
-        $('#questionActive').text(answeredCount);
+        $('#question_active').text(answeredCount);
 
         return answeredCount;
     }
 
     function answerListApplyListener() {
-        let questionListDiv = $('#questionList');
+        let questionListDiv = $('#question_list');
         let questionItemList = questionListDiv.children();
         let answerListOnly = questionItemList.children(':odd');
 
@@ -335,7 +335,7 @@
     }
 
     function setProgressBar(percent) {
-        $('#progressBarAnswers').attr('aria-valuenow', percent).css('width', percent + '%');
+        $('#progressbar_answers').attr('aria-valuenow', percent).css('width', percent + '%');
     }
 
     loadCollection(collection);
