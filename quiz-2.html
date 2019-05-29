@@ -80,33 +80,45 @@
     </div>
 </div>
 <div class="content">
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
-            <div class="col col-md-12">
+            <h1 class="quiz-title">Quiz 1</h1>
+            <div class="text-center col-12 col-sm-12 col-lg-12">
                 <div class="sub-quiz-result" style="display: none;">
-                    <p id="score">Score: <span id="result_score"></span>/<span
-                            id="full_score"></span></p>
-                    <p id="time_finish_blog">Time: <span id="time_finish"></span></p>
-                </div>
-                <div id="question_list">
-                </div>
-                <div class="text-center done-blog">
-                    <button type="button" id="btn_done"
-                            class="btn btn-result waves-effect waves-light calculate"
-                            data-toggle="modal" data-target="#modalPush"
-                            style="display: inline-block;">DONE
-                    </button>
-
-                    <!--TODO: SHOW THESE BUTTON WHEN FINISH QUIZ-->
-                    <a class="btn btn-result waves-effect waves-light" id="btn_quiz"
-                       style="color: white; display: none;" href="/profile">Quiz</a>
-                    <a class="btn btn-result waves-effect waves-light" id="btn_profile"
-                       style="color: white; display: none;" href="/profile">Profile</a>
-                    <a class="btn btn-result waves-effect waves-light" id="btn_home"
-                       style="color: white; display: none;" href="/home">Home</a>
-
+                    <p id="score">Score: <span id="result_score"></span>/<span id="full_score"></span></p>
+                    <p id="time_finish_blog">Time: <span id="time-finish"></span></p>
                 </div>
             </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-sm-12 col-lg-12 border">
+                <div id="instruction-tip">
+                    <i class="fas fa-info-circle pr-2"></i>
+                    <span id="instruction-detail">Please choose the correct answer.</span>
+                </div>
+
+                <br>
+
+                <div id="question_list">
+                </div>
+            </div>
+        </div>
+
+        <div class="button-group text-center done-blog">
+            <button type="button" id="btn_done"
+                    class="btn btn-blue-grey calculate"
+                    data-toggle="modal" data-target="#modalPush"
+                    style="display: inline-block;">DONE
+            </button>
+
+            <!--TODO: SHOW THESE BUTTON WHEN FINISH QUIZ-->
+            <a class="btn btn-blue-grey text-white" id="btn_quiz"
+               style="display: none;" href="/profile">Quiz</a>
+            <a class="btn btn-blue-grey text-white" id="btn_profile"
+               style="display: none;" href="/profile">Profile</a>
+            <a class="btn btn-blue-grey text-white" id="btn_home"
+               style="display: none;" href="/home">Home</a>
         </div>
 
         <!-- Modal Start -->
@@ -144,6 +156,7 @@
             </div>
         </div>
     </div>
+
     <div class="container-fluid pt-3 pb-1 fixed-bottom" id="timer">
         <div class="row">
             <div class="col col-md-6">
