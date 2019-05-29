@@ -1,12 +1,11 @@
-
 var totalSubject = 0;
-var subRecord = [];
-var myStr;
+var subRecord = []; //Record for each subject
+var myStr; //Subject name
 //
-var record = [];
+var record = []; //Total Record
 //
-
 //
+/* Fixed Data */
 var alertImageChange = 1;
 var proPic = 'img/imgPro/bgPro.jpg';
 var fileName = 'img/imgPro/bgPro.jpg';
@@ -16,38 +15,43 @@ var proFirstName = 'G4';
 var proSurName = 'HRD';
 var proGender = 'Other';
 var proEmail = 'example@ex.co';
-//
-
+/* End Fixing */
+/* Use for generate data auto */
 const initData = () => {
+    for (let i = 0; i < 2; i++)
+        record.push({
+            subject: 'JS',
+            date: new Date().toLocaleDateString() + ' : ' + new Date().getHours() + ':' + new Date().getMinutes(),
+            score: '10/10',
+            during: '20s',
+            quizN: 'Quiz 1'
+        })
 
-    for (let i = 0; i < 5; i++)
+    for (let i = 0; i < 3; i++)
         record.push({
             subject: 'HTML',
-            date: '2019',
+            date: new Date().toLocaleDateString() + ' : ' + new Date().getHours() + ':' + new Date().getMinutes(),
             score: '10/10',
             during: '20s',
             quizN: 'Quiz 1'
         })
     record.push({
-        subject: 'JS',
-        date: '2019',
+        subject: 'CSS',
+        date: new Date().toLocaleDateString() + ' : ' + new Date().getHours() + ':' + new Date().getMinutes(),
         score: '10/10',
         during: '20s',
         quizN: 'Quiz 1'
     })
 
 }
-
-// initData();
-
-
+/* Count Total Record */
 const countRecord = () => {
     let str = '';
     if (record.length == 0) {
-        // alert(0);
         console.log(0)
         totalSubject = 0;
     } else {
+        //Sort Data ASC
         record.sort(
             (first, second) => {
                 var x = first.subject.toLowerCase();
@@ -61,6 +65,7 @@ const countRecord = () => {
                 return 0;
             }
         )
+        //Make Data to each categories
         str = record[0].subject;
         subRecord.push(str);
         totalSubject = 1;
@@ -74,9 +79,7 @@ const countRecord = () => {
 
     }
 }
-
-// countRecord();
-
+/* Seperate Data to each category */
 const seperateData = () => {
     if (totalSubject == 0) return;
     myStr = new Array(totalSubject);
@@ -100,21 +103,7 @@ const seperateData = () => {
             str = record[st].subject;
     }
 }
-
-// seperateData();
-
-//Create Object when user do quiz
-const lumhatHistory = (subject, date, score, during, quizN) => {
-    record.push({
-        subject: subject,
-        date: date,
-        score: score,
-        during: during,
-        quizN: quizN
-    })
-    console.log(record[record.length]);
-}
-
+/* Insert Data to each Row for any subject */
 const insertRow = (subject, cusRecord) => {
     let str = '';
 
@@ -129,10 +118,8 @@ const insertRow = (subject, cusRecord) => {
         `
     return str;
 }
-
+/* Create a table for a subject */
 const insertTable = (subject, cusRecord) => {
-    // for(let i =0; i<record.length; i++){
-    // }
     $('#create-new-tbl').append(
         `<tr>
         <td colspan="4">
@@ -151,15 +138,15 @@ const insertTable = (subject, cusRecord) => {
     `
     )
 }
-
+/* Make big table */
 const createTable = () => {
     countRecord();
     seperateData();
     if (totalSubject == 0) {
         console.log('Work');
-            $('#start-up-tbl').alert("work")
+        $('#start-up-tbl').alert("work")
         $('#start-up-tbl').html(
-        `
+            `
                 <thead>
                     <tr>
                         <th>Date</th>
@@ -173,48 +160,45 @@ const createTable = () => {
                 </tbody>
         `
         );
+        return
+    } else
 
-    // alert("work")
-    return 
-
-    }
-    else
-    // insertTable();    
-    // alert("NONE")
-    for (let i = 0; i < totalSubject; i++) {
-        insertTable(subRecord[i], myStr[i]);
-    }
+        for (let i = 0; i < totalSubject; i++) {
+            insertTable(subRecord[i], myStr[i]);
+        }
 }
 createTable();
-
-$('#pro-hover-change').hover(() => {
-    []
-})
-
-const clearBtn = ()=>{
+// $('#pro-hover-change').hover(() => {
+//     []
+// })
+/* Just clear record and generate a big table */
+const clearBtn = () => {
     record = [];
     createTable();
 }
+/* Event Click on Btn Clear */
 $('#pro-clear-history').click(() => {
     clearBtn();
 })
-
-$('#pro-generate-data').click(()=>{
+/* Event Click on Btn Generate */
+$('#pro-generate-data').click(() => {
+    let str = [];
+    if (record.length > 1) {
+        str = record;
+        console.log(str);
+        clearBtn();
+    }
     initData();
-    let tableNum = $('#create-new-tbl').find('table').length;
-    // if(tableNum > 0) {
-    //     clearBtn();
-    //     countRecord(); 
-    //     seperateData();
-    // }
+    record = record.concat(str);
+    console.log(record);
     createTable();
 })
-
-const uploadContact = ()=>{
-    if(alertImageChange == 1){
+/* Generate to Contact */
+const uploadContact = () => {
+    if (alertImageChange == 1) {
         $('input[type="file"]').val('');
     }
-    document.getElementById("hover-pro-photo").setAttribute('src',proPic)
+    document.getElementById("hover-pro-photo").setAttribute('src', proPic)
     $('#in-id-pro').val(proID).trigger("change");
     $('#in-birthdate-pro').val(proBirthdate).trigger("change");
     $('#in-first-name-pro').val(proFirstName).trigger("change");
@@ -222,18 +206,16 @@ const uploadContact = ()=>{
     $('#in-gender-pro').val(proGender);
     $('#in-email-pro').val(proEmail).trigger("change");
     $('#profile-name').text(proSurName + ' ' + proFirstName);
-    // alert("profile 001")
 };
-
-$('#pills-profile-tab').click(()=>{
-    document.getElementById("hover-pro-photo").setAttribute('src',proPic)
+/*  */
+$('#pills-profile-tab').click(() => {
+    document.getElementById("hover-pro-photo").setAttribute('src', proPic)
     $('#profile-name').text(proSurName + ' ' + proFirstName);
 
 })
-
 uploadContact();
-
-$('#change-contact-value').click(()=>{
+/* Event Click Change when changing value */
+$('#change-contact-value').click(() => {
     alert('changed')
     proPic = fileName;
     proID = $('#in-id-pro').val();
@@ -242,33 +224,29 @@ $('#change-contact-value').click(()=>{
     proSurName = $('#in-surname-pro').val();
     proGender = $('#in-gender-pro').val();
     proEmail = $('#in-email-pro').val();
-    // uploadContact();
     alertImageChange = 0;
     $('#profile-name').text(proSurName + ' ' + proFirstName);
 })
-
+/* Changing Profile Image */
 $('#hover-pro-photo').on({
-    mouseenter: ()=>{
+    mouseenter: () => {
         $('#pro-hover-change').removeClass("createHid").addClass("cus-change centered");
-
         $('#pro-hover-change').on({
-            mouseenter: ()=>{
+            mouseenter: () => {
                 $('#pro-hover-change').removeClass("createHid").addClass("cus-change centered");
             },
-            mouseleave: ()=>{
+            mouseleave: () => {
                 $('#pro-hover-change').removeClass("cus-change centered").addClass("createHid");
             }
         })
     },
-    mouseleave: ()=>{
+    mouseleave: () => {
         $('#pro-hover-change').removeClass("cus-change centered").addClass("createHid")
     }
 })
-
-$('input[type="file"]').change(function(e){
+/* Hover on Image Perform and Pick a picture */
+$('input[type="file"]').change(function (e) {
     fileName = 'img/imgPro/' + e.target.files[0].name;
-    console.log(document.getElementById("hover-pro-photo").setAttribute('src',fileName))
+    console.log(document.getElementById("hover-pro-photo").setAttribute('src', fileName))
     alertImageChange = 1;
 });
-
-
