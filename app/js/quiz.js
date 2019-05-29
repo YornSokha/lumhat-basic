@@ -249,7 +249,7 @@
                     {
                         answerId: 2,
                         answerDescription: "X",
-                        isCorrect: true,
+                        isCorrect: false,
                     },
 
                     {
