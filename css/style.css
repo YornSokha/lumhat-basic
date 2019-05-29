@@ -2,13 +2,29 @@
     color: #11999E;
     border-top: 1px solid #11999E;
     font-size: 16px;
+    background: white;
 }
 
-.btn-result {
-    background-color: #11999E;
-    border-radius: 5px;
-    color: white;
-    font-weight: bold;
-    margin: 20px;
-    margin-bottom: 8%;
+.border {
+    border: 1px solid #17a2b8;
+    padding: 50px;
+}
+
+.quiz-title {
+    color: #17a2b8;
+    padding-top: 10px;
+    padding-bottom: 20px
+}
+
+.button-group {
+    margin-top: 25px;
+    margin-bottom: 100px;
+}
+
+#instruction-tip {
+    padding: 10px 10px;
+    border-left: 4px solid #d8d8d8;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    font-size: 18px;
 }

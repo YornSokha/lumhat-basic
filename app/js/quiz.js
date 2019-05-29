@@ -35,7 +35,7 @@
 
     function startTimer(duration, display) {
         startTime = Date.now();
-        console.log(startTime);
+        // console.log(startTime);
         let timer = duration,
             minutes, seconds;
         interval = setInterval(function () {
