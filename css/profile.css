@@ -1,7 +1,7 @@
 tr{
     border: 1px solid black;
-    
 }
+
 th{
     border: 1px solid red;
     width: 200px;
@@ -9,11 +9,10 @@ th{
 
 .item-w-100 > td{
     width: 200px;
-    background-color: aqua;
 }
 
 .tbl-item > thead{
-    background-color: green;   
+    background-color: #11999E !important;
 }
 
 .profile-card .avatar {
@@ -35,8 +34,10 @@ th{
 }
 
 .cus-bg{
-    height: 250px;
+    height: 350px;
     background-image: url("../img/imgPro/bgPro.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .centered {
@@ -74,7 +75,22 @@ th{
     color: white;
     background-color: rgba(0, 0, 0, 0);
     width: 75%;
-    /* height: 100%; */
     border: 0;
     margin-top: 10px;
+}
+
+#pills-tab{
+    background-color: #11999E !important;
+    padding: 1% 5%;
+}
+
+a{
+    color: white;
+}
+
+a:hover{
+    color: black;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+    background-color: rgba(255, 255, 255, .2) !important;
 }
