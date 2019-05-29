@@ -50,6 +50,10 @@ $(document).ready(function () {
                 }
             }
         }
+
+        let answer = $('input[is-correct="true"]');
+        answer.parent().addClass('default-color');
+
         modifyButton();
         $('.sub-quiz-result').css('display', 'inherit');
         $('#result_score').text(correctAnswer);
