@@ -67,217 +67,24 @@
     /**
      *  dora part
      */
-    function Collection(collectionId, questionList) {
-        this._collectionId = collectionId;
-        this._questionList = questionList;
-    }
-
-    function QuestionList(questionId, questionDescription, answerList) {
-        this._questionId = questionId;
-        this._questionDescription = questionDescription;
-        this._answerList = answerList;
-    }
-
-    function AnswerList(answerId, answerDescription, isCorrect) {
-        this._answerId = answerId;
-        this._answerDescription = answerDescription;
-        this._isCorrect = isCorrect;
-    }
-
-    const collection = {
-        collectionId: 0,
-        questionList: [{
-                questionId: 0,
-                questionDescription: "What is A?",
-                answerList: [{
-                        answerId: 0,
-                        answerDescription: "A",
-                        isCorrect: true,
-                    },
-
-                    {
-                        answerId: 1,
-                        answerDescription: "B",
-                        isCorrect: false,
-                    },
-
-                    {
-                        answerId: 2,
-                        answerDescription: "C",
-                        isCorrect: false,
-                    },
-
-                    {
-                        answerId: 3,
-                        answerDescription: "D",
-                        isCorrect: false,
-                    },
-                ],
-            },
-
-            {
-                questionId: 1,
-                questionDescription: "What is B?",
-                answerList: [{
-                        answerId: 0,
-                        answerDescription: "A",
-                        isCorrect: false,
-                    },
-
-                    {
-                        answerId: 1,
-                        answerDescription: "B",
-                        isCorrect: true,
-                    },
-
-                    {
-                        answerId: 2,
-                        answerDescription: "C",
-                        isCorrect: false,
-                    },
-
-                    {
-                        answerId: 3,
-                        answerDescription: "D",
-                        isCorrect: false,
-                    },
-                ],
-            },
-
-            {
-                questionId: 2,
-                questionDescription: "What is C?",
-                answerList: [{
-                        answerId: 0,
-                        answerDescription: "A",
-                        isCorrect: false,
-                    },
-
-                    {
-                        answerId: 1,
-                        answerDescription: "B",
-                        isCorrect: false,
-                    },
-
-                    {
-                        answerId: 2,
-                        answerDescription: "C",
-                        isCorrect: true,
-                    },
-
-                    {
-                        answerId: 3,
-                        answerDescription: "D",
-                        isCorrect: false,
-                    },
-                ],
-            },
-
-            {
-                questionId: 3,
-                questionDescription: "What is C?",
-                answerList: [{
-                        answerId: 0,
-                        answerDescription: "A",
-                        isCorrect: false,
-                    },
-
-                    {
-                        answerId: 1,
-                        answerDescription: "B",
-                        isCorrect: false,
-                    },
-
-                    {
-                        answerId: 2,
-                        answerDescription: "C",
-                        isCorrect: true,
-                    },
-
-                    {
-                        answerId: 3,
-                        answerDescription: "D",
-                        isCorrect: false,
-                    },
-                ],
-            },
-
-            {
-                questionId: 4,
-                questionDescription: "What is E?",
-                answerList: [{
-                        answerId: 0,
-                        answerDescription: "E",
-                        isCorrect: true,
-                    },
-
-                    {
-                        answerId: 1,
-                        answerDescription: "F",
-                        isCorrect: false,
-                    },
-
-                    {
-                        answerId: 2,
-                        answerDescription: "G",
-                        isCorrect: false,
-                    },
-
-                    {
-                        answerId: 3,
-                        answerDescription: "H",
-                        isCorrect: false,
-                    },
-                ],
-            },
-
-            {
-                questionId: 5,
-                questionDescription: "What is H?",
-                answerList: [{
-                        answerId: 0,
-                        answerDescription: "H",
-                        isCorrect: true,
-                    },
-
-                    {
-                        answerId: 1,
-                        answerDescription: "Z",
-                        isCorrect: false,
-                    },
-
-                    {
-                        answerId: 2,
-                        answerDescription: "X",
-                        isCorrect: false,
-                    },
-
-                    {
-                        answerId: 3,
-                        answerDescription: "C",
-                        isCorrect: false,
-                    },
-                ],
-            }
-        ],
-    };
-
     function loadCollection(collection) {
         let str = "";
         let questionList = collection.questionList;
 
-        let counter = 1;
+        let counter = 0;
         for (let question of questionList) {
             str +=
-                `<div class=\"question question-item\" id=\"question_id_${question.questionId}\">` +
-                `<div class=\"question-title\" id=\"question_description_${question.questionId}\">${counter}. ${question.questionDescription}</div>`;
+                `<div class=\"question question-item\" id=\"question_id_${counter}\">` +
+                `<div class=\"question-title\" id=\"question_description_${counter}\">${counter}. ${question.questionDescription}</div>`;
 
+            let in_counter = 0;
             for (let answer of question.answerList) {
                 str +=
                     `<div class=\"form-check form-check-answer answer-item\">` +
-                    `<input type=\"radio\" class=\"form-check-input radio-answer option-input radio\" value=\"${answer.answerDescription}\" name=\"question_${question.questionId}\" id=\"answer_${question.questionId}_${answer.answerId}\" is-correct=\"${answer.isCorrect}\">` +
+                    `<input type=\"radio\" class=\"form-check-input radio-answer option-input radio\" value=\"answer_${in_counter}\" name=\"question_${counter}\" id=\"answer_${counter}_${in_counter}\" is-correct=\"${answer.isCorrect}\">` +
                     `<label class=\"label-answer form-check-label\">${answer.answerDescription}</label>` +
                     `</div>`;
+                in_counter++;
             }
 
             str += `</div>`;
