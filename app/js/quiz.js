@@ -114,10 +114,10 @@
     function answerListApplyListener() {
         let questionListDiv = $('#question_list');
         let questionItemList = questionListDiv.children();
-        let answerListOnly = questionItemList.children(':odd');
 
-        for(let item of answerListOnly) {
-            for(let subitem of item.childNodes) {
+        for(let item of questionItemList) {
+            let answerItemList = $(item).children('.answer-item');
+            for(let subitem of answerItemList) {
                 $(subitem).hover(mouseEnterHandler, mouseLeaveHandler);
                 $(subitem).click(mouseClickHandler);
             }
