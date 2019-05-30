@@ -49,9 +49,6 @@ $(document).ready(function () {
                     correctAnswer++;
                 }
             }
-            else{
-                console.log($(question));
-            }
         }
 
         let answer = $('input[is-correct="true"]');
