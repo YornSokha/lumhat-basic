@@ -17,10 +17,56 @@
 </head>
 
 <body>
-
     <!-- Start your project here-->
     <div class="container">
-    </div>
+        <div class="card">
+            <div class="row">
+                <div class="col-6" style="padding:50px">
+                    <div class="card-header" id="LH1">
+                        <a  href="#LHU1">
+                            <h5  id="1">Programming ▼</h5>
+                        </a>
+                    </div>
+                    <div id="LHU1">
+                        <div class="card-block">
+                        </div>
+                    </div>
+                    <!-- category web -->
+                    <div class="card-header" id="LH2">
+                        <a  href="#LHU1">
+                            <h5 id="2">Web Develop ▼</h5>
+                        </a>
+                    </div>
+                    <div id="LHU2" >
+                        <div class="card-block">
+                        </div>
+                    </div>
+                    <!-- category Exam -->
+                    <div class="card-header" id="LH3">
+                        <a href="#LHU3" >
+                            <h5  id="3">HRD Exam ▼</h5>
+                        </a>
+                    </div>
+                    <div id="LHU3" >
+                        <div class="card-block">
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="col-6" style="padding:50px">
+                    <h1><b>Level</b></h1><br>
+                    <div id="basic">
+                        <h3><b>basic</b></h3> 
+                    </div><br>   
+                    <div id="meduim">
+                        <h3><b>meduim</b></h3> 
+                    </div><br> 
+                    <div id="advance">
+                        <h3><b>advance</b></h3> 
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- /Start your project here-->
 
@@ -34,6 +80,12 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="js/mdb.min.js"></script>
     <script src="app/js/script.js"></script>
+    <script src="app/js/scriptJava.js"></script>
+    <script>
+        $( "#LH1" ).click(function() { $( "#LHU1" ).toggle( "slow" ); });
+        $( "#LH2" ).click(function() { $( "#LHU2" ).toggle( "slow" ); });
+        $( "#LH3" ).click(function() { $( "#LHU3" ).toggle( "slow" ); });
+    </script>
 </body>
 
 </html>
