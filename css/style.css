@@ -2,7 +2,6 @@
     color: #11999E;
     border-top: 1px solid #11999E;
     font-size: 16px;
-<<<<<<< HEAD
     background: white;
 }
 
@@ -138,7 +137,6 @@ p.skipped{
 .option-input.radio::after {
     border-radius: 50%;
 }
-=======
 }
 .card-header{
     background-color: white;
@@ -151,4 +149,3 @@ p.skipped{
     width: 70px;
     padding: 10px 10px;
 }
->>>>>>> master
