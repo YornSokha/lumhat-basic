@@ -20,17 +20,17 @@
     });
 
     function setupModal(header, icon, text, button, buttonClass) {
-        $('.modal-content > .modal-header > p').text(header);
+        $('.modal-content > .modal-header > .lead').text(header);
         $('.modal-content > .modal-body > div > p').text(text);
         $('.modal-content > .modal-body > div > i').attr('class', icon);
-        $('.modal-content > .modal-footer > a').attr('class', buttonClass).text(button);
+        $('.modal-content > .justify-content-center > a').attr('class', buttonClass).text(button);
     }
 
     function onTime() {
         clearInterval(interval);
         setupModal('Time up', 'far fa-4x fa-check-circle', 'Please check your result!',
-            'CONTINUE', 'btn btn-warning waves-effect continue');
-        $('.modal-dialog').removeClass('modal-info').addClass('modal-warning').parent().modal('show');
+            'CONTINUE', 'btn btn-warning waves-effect calculate');
+        $('#start-modal').find('.modal-dialog').removeClass('modal-info').addClass('modal-warning').parent().modal('show');
     }
 
     function startTimer(duration, display) {
@@ -61,7 +61,7 @@
 
     $(document).on('click', '.start', () => {
         // alert();
-        startTimer(60 * 2, $('#clock'))
+        startTimer(20 * 60 , $('#clock'))
     });
 
     /**
@@ -249,7 +249,7 @@
                     {
                         answerId: 2,
                         answerDescription: "X",
-                        isCorrect: true,
+                        isCorrect: false,
                     },
 
                     {

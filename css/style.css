@@ -5,17 +5,19 @@
     background: white;
 }
 
-.border {
-    border: 1px solid #17a2b8;
+.border-quiz {
+    border: 1px solid #17a2b8!important;
     padding: 50px;
 }
 
 #score {
+    color: #11999E;
     font-size: 38px;
     text-transform: uppercase;
 }
 
 #time_finish_blog {
+    color: #11999E;
     font-size: 18px;
 }
 
@@ -31,23 +33,23 @@
 }
 
 .answer-list {
-    margin-top: 12px;
-    margin-bottom: 12px;
+    margin-top: 14px;
+    margin-bottom: 14px;
 }
 
-.answer-item {
-    padding-top: 2px;
-    padding-bottom: 2px;
-}
+.form-check {}
+
+.form-check-input {}
+
+.form-check-label {}
 
 .radio-answer {
-    position: relative;
     margin-left: 20px;
 }
 
 .label-answer {
-    margin-left: 20px;
     font-size: 18px;
+    padding-left: 25px;
 }
 
 .button-group {
@@ -73,7 +75,7 @@
     top: 2px;
     right: 0;
     bottom: 0;
-    left: 0;
+    left: 2px;
     height: 20px;
     width: 20px;
     transition: all 0.15s ease-out 0s;

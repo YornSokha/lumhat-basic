@@ -4,7 +4,7 @@ $(document).ready(function () {
     let totalQuestion;
 
     function modifyButton() {
-        $('.calculate').css('display', 'none');
+        $('#btn_done').css('display', 'none');
         $('#btn_home').css('display', 'inline-block');
         $('#btn_profile').css('display', 'inline-block');
     }
@@ -15,7 +15,22 @@ $(document).ready(function () {
         return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
     }
 
+    $(document).on('click', '#btn_done', () =>{
+       $('#modal-done').modal('show');
+    });
+
+    function setNewLayout(){
+        $('#modal-done').css('display', 'none');
+        $('#start-modal').css('display', 'none');
+        $('.modal-backdrop').remove();
+        $('.quiz-title').css('display', 'none');
+        $('body,html').animate({
+            scrollTop: 0
+        }, 1000);
+    }
+
     $(document).on('click', '.calculate', () => {
+        setNewLayout();
         stopTime = Date.now();
         let miliUsed = stopTime - startTime;
         // console.log(millisToMinutesAndSeconds(miliUsed));
@@ -35,6 +50,10 @@ $(document).ready(function () {
                 }
             }
         }
+
+        let answer = $('input[is-correct="true"]');
+        answer.parent().addClass('default-color');
+
         modifyButton();
         $('.sub-quiz-result').css('display', 'inherit');
         $('#result_score').text(correctAnswer);
