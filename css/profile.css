@@ -43,7 +43,7 @@ th{
 .centered {
     display: block;
     position: absolute;
-    top: 312px;
+    top: 412px;
     left: 50%;
     transform: translate(-50%, -50%);
 }
