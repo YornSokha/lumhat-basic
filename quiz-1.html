@@ -2,103 +2,61 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta http-equiv="x-ua-compatible" content="ie=edge"/>
     <title>QUIZ 1</title>
     <!-- Font Awesome -->
-    <link
-            rel="stylesheet"
-            href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-            integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
-            crossorigin="anonymous"
-    />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+          integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <!-- Bootstrap core CSS -->
-    <link
-            href="https://fonts.googleapis.com/css?family=Hanuman"
-            rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css?family=Hanuman" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
     <!-- Material Design Bootstrap -->
     <link href="css/mdb.min.css" rel="stylesheet"/>
     <!-- Your custom styles (optional) -->
+    <link href="css/overide.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet"/>
-    <link href="css/overide.css" rel="stylesheet"/>
+    <script src="app/js/profileData.js" type="text/javascript"></script>
 </head>
-
 <body>
 <!-- Start your project here-->
-<div class="content">
-    <div class="container" style="margin-top: 100px">
+<div id="pro-nav-bar"></div>
+<div class="content" style="margin-top: 100px">
+    <div class="container">
         <div class="row">
             <h1 class="quiz-title">Quiz 1</h1>
             <div class="text-center col-12 col-sm-12 col-lg-12">
                 <div class="sub-quiz-result" style="display: none;">
-                    <p id="score">
-                        Score: <span id="result_score"></span>/<span
-                            id="full_score"
-                    ></span>
-                    </p>
-                    <p id="time_finish_blog">
-                        Time: <span id="time-finish"></span>
-                    </p>
+                    <p id="score">Score: <span id="result_score"></span>/<span id="full_score"></span></p>
+                    <p id="time_finish_blog">Time: <span id="time-finish"></span></p>
                 </div>
             </div>
         </div>
-
         <div class="row">
             <div class="col-12 col-sm-12 col-lg-12 border-quiz">
                 <div id="instruction-tip">
                     <i class="far fa-bookmark pr-2"></i>
-                    <span id="instruction-detail"
-                    >Please choose the correct answer.</span
-                    >
+                    <span id="instruction-detail">Please choose the correct answer.</span>
                 </div>
-
-                <br/>
-
-                <div id="question_list"></div>
+                <br>
+                <div id="question_list">
+                </div>
             </div>
         </div>
-
         <div class="button-group text-center done-blog">
-            <button
-                    type="button"
-                    id="btn_done"
+            <button type="button" id="btn_done"
                     class="btn btn-blue-grey"
-                    data-toggle="modal"
-                    data-target="#modalPush"
-                    style="display: inline-block;"
-            >
-                DONE
+                    data-toggle="modal" data-target="#modalPush"
+                    style="display: inline-block;">DONE
             </button>
-
             <!--TODO: SHOW THESE BUTTON WHEN FINISH QUIZ-->
-            <a
-                    class="btn btn-blue-grey text-white"
-                    id="btn_quiz"
-                    style="display: none;"
-                    href="/profile"
-            >Quiz</a
-            >
-            <a
-                    class="btn btn-blue-grey text-white"
-                    id="btn_profile"
-                    style="display: none;"
-                    href="profile.html"
-            >Profile</a
-            >
-            <a
-                    class="btn btn-blue-grey text-white"
-                    id="btn_home"
-                    style="display: none;"
-                    href="index.html"
-            >Home</a
-            >
+            <a class="btn btn-blue-grey text-white" id="btn_quiz"
+               style="display: none;" href="/profile">Quiz</a>
+            <a class="btn btn-blue-grey text-white" id="btn_profile"
+               style="display: none;" href="profile.html">Profile</a>
+            <a class="btn btn-blue-grey text-white" id="btn_home"
+               style="display: none;" href="index.html">Home</a>
         </div>
-
         <!-- Modal Start -->
         <div
                 class="modal fade"
@@ -119,7 +77,7 @@
                     <!-- Body -->
                     <div class="modal-body">
                         <div class="text-center">
-                            <i class="far fa-clock fa-4x"></i>
+                            <i class="far fa-4x fa-clock"></i>
                             <!-- <i class="fa fa-clock-o fa-4x mb-3 animated rotateIn"></i> -->
                             <p class="mt-2">00:00</p>
                         </div>
@@ -133,27 +91,15 @@
                 </div>
             </div>
         </div>
-
-        <!-- Modal Done -->
-        <div
-                class="modal fade"
-                id="modal-done"
-                tabindex="-1"
-                role="dialog"
-                aria-hidden="true"
-                style="padding-right: 17px;"
-        >
-            <div
-                    class="modal-dialog modal-notify modal-info"
-                    role="document"
-            >
+        <!--Modal Done-->
+        <div class="modal fade" id="modal-done" tabindex="-1" role="dialog" aria-hidden="true"
+             style="padding-right: 17px;">
+            <div class="modal-dialog modal-notify modal-info" role="document">
                 <!--Content-->
                 <div class="modal-content text-center">
                     <!--Header-->
-                    <div
-                            class="modal-header d-flex justify-content-center text-center"
-                            style="background-color:  #11999E;"
-                    >
+                    <div class="modal-header d-flex justify-content-center text-center"
+                         style="background-color:  #11999E;">
                         <p class="heading">Alert</p>
                     </div>
                     <!--Body-->
@@ -163,47 +109,37 @@
                     </div>
                     <!--Footer-->
                     <div class="modal-footer flex-center">
-                        <!--                        <a href="#" class="btn btn-color waves-effect btn-danger" data-dismiss="modal">NO</a>-->
-                        <button
-                                class="btn btn-color waves-effect btn-danger"
-                                data-dismiss="modal"
-                        >
-                            NO
-                        </button>
-                        <!--                        <button class="btn btn-color waves-effect calculate" data-dismiss="modal" style="color: black;">YES</button>-->
-                        <a
-                                type="button"
-                                class="btn btn-color waves-effect calculate"
-                                data-dismiss="modal"
-                                style="color: white; background-color:  #11999E;"
-                        >YES</a
-                        >
+                        <!-- <a href="#" class="btn btn-color waves-effect btn-danger" data-dismiss="modal">NO</a>-->
+                        <button class="btn btn-color waves-effect btn-danger" data-dismiss="modal">NO</button>
+                        <!-- <button class="btn btn-color waves-effect calculate" data-dismiss="modal" style="color: black;">YES</button>-->
+
+                        <a type="button" class="btn btn-color waves-effect calculate" data-dismiss="modal"
+                           style="color: white; background-color:  #11999E;">YES</a>
                     </div>
                 </div>
                 <!--/.Content-->
             </div>
         </div>
     </div>
-
     <div class="container-fluid pt-3 pb-1 fixed-bottom" id="timer">
         <div class="row">
             <div class="col col-md-6">
                 <div class="row">
                     <div class="col-md-6 col-sm-6 col-12 text-right ">
-                                <span>
-                                    <span id="question_active">
-                                        <!-- answered number -->
-                                        <!-- default value -->
-                                        0
-                                    </span>
-                                    of
-                                    <span id="question_count">
-                                        <!-- total answers number -->
-                                        <!-- default value -->
-                                        0
-                                    </span>
-                                    answers
+                            <span>
+                                <span id="question_active">
+                                    <!-- answered number -->
+                                    <!-- default value -->
+                                    0
                                 </span>
+                                of
+                                <span id="question_count">
+                                    <!-- total answers number -->
+                                    <!-- default value -->
+                                    0
+                                </span>
+                                answers
+                            </span>
                     </div>
                     <div class="col-md-6 col-sm-6 text-right">
                         <div
@@ -236,7 +172,13 @@
         </div>
     </div>
 </div>
+<footer>
+    <div id="stop" class="scrollTop" style="">
+        <a href="#"><img src="img/scrollToTop.png"></a>
+    </div>
+</footer>
 <!-- /Start your project here-->
+
 
 <!--&lt;!&ndash; Footer &ndash;&gt;-->
 <!--<footer class="page-footer font-small blue fixed-bottom">-->
@@ -263,5 +205,8 @@
 <script src="app/js/question-collection.js"></script>
 <script src="app/js/quiz.js"></script>
 <script src="app/js/answer.js"></script>
+<script src="app/js/profileNav.js" type="text/javascript"></script>
+<script src="js/category.js"></script>
+<script src="js/home.js"></script>
 </body>
 </html>

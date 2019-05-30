@@ -68,6 +68,7 @@ $(document).ready(function () {
 
                 if (rightAnswer === 'true') {
                     rightAnswerTemp = answer;
+                    setQuestionRight(answer);
                 }
 
             }
