@@ -270,8 +270,7 @@
         for (let question of questionList) {
             str +=
                 `<div class=\"question question-item\" id=\"question_id_${question.questionId}\">` +
-                `<div class=\"question-title\" id=\"question_description_${question.questionId}\">${counter}. ${question.questionDescription}</div>` +
-                `<div class=\"answer-list\" id=\"answer_list_${question.questionId}\">`;
+                `<div class=\"question-title\" id=\"question_description_${question.questionId}\">${counter}. ${question.questionDescription}</div>`;
 
             for (let answer of question.answerList) {
                 str +=
@@ -281,7 +280,7 @@
                     `</div>`;
             }
 
-            str += `</div></div>`;
+            str += `</div>`;
             counter++;
         }
         document.getElementById('question_list').innerHTML = str;
@@ -308,10 +307,10 @@
     function answerListApplyListener() {
         let questionListDiv = $('#question_list');
         let questionItemList = questionListDiv.children();
-        let answerListOnly = questionItemList.children(':odd');
 
-        for(let item of answerListOnly) {
-            for(let subitem of item.childNodes) {
+        for(let item of questionItemList) {
+            let answerItemList = $(item).children('.answer-item');
+            for(let subitem of answerItemList) {
                 $(subitem).hover(mouseEnterHandler, mouseLeaveHandler);
                 $(subitem).click(mouseClickHandler);
             }
