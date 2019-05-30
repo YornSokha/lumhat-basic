@@ -2,13 +2,125 @@
     color: #11999E;
     border-top: 1px solid #11999E;
     font-size: 16px;
+    background: white;
 }
 
-.btn-result {
-    background-color: #11999E;
-    border-radius: 5px;
-    color: white;
-    font-weight: bold;
-    margin: 20px;
-    margin-bottom: 8%;
+.border-quiz {
+    border: 1px solid #17a2b8!important;
+    padding: 50px;
+}
+
+#score {
+    color: #11999E;
+    font-size: 38px;
+    text-transform: uppercase;
+}
+
+#time_finish_blog {
+    color: #11999E;
+    font-size: 18px;
+}
+
+.quiz-title {
+    color: #17a2b8;
+    padding-top: 10px;
+    padding-bottom: 20px
+}
+
+.question-title {
+    font-size: 22px;
+    color: #11999E;
+}
+
+.answer-list {
+    margin-top: 14px;
+    margin-bottom: 14px;
+}
+
+.form-check {}
+
+.form-check-input {}
+
+.form-check-label {}
+
+.radio-answer {
+    margin-left: 20px;
+}
+
+.label-answer {
+    font-size: 18px;
+    padding-left: 25px;
+}
+
+.button-group {
+    margin-top: 24px;
+    margin-bottom: 98px;
+}
+
+#instruction-tip {
+    padding: 10px 10px;
+    border-left: 4px solid #d8d8d8;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.option-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    position: relative;
+    top: 2px;
+    right: 0;
+    bottom: 0;
+    left: 2px;
+    height: 20px;
+    width: 20px;
+    transition: all 0.15s ease-out 0s;
+    background: #cbd1d8;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 0.5rem;
+    outline: none;
+    z-index: 1000;
+}
+.option-input:hover {
+    background: #9faab7;
+}
+.option-input:checked {
+    background: #40e0d0;
+}
+
+.option-input:checked::before {
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    content: '✔';
+    display: inline-block;
+    font-size: 16.66667px;
+    text-align: center;
+    line-height: 20px;
+}
+
+.option-input:checked::after {
+    -webkit-animation: click-wave 0.65s;
+    -moz-animation: click-wave 0.65s;
+    animation: click-wave 0.65s;
+    background: #40e0d0;
+    content: '';
+    display: block;
+    position: relative;
+    z-index: 100;
+}
+
+.option-input.radio {
+    border-radius: 50%;
+}
+
+.option-input.radio::after {
+    border-radius: 50%;
 }
