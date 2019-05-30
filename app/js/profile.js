@@ -1,4 +1,3 @@
-
 /* Use for generate data auto */
 const initData = () => {
     for (let i = 0; i < 2; i++)
@@ -197,24 +196,50 @@ $('#pills-profile-tab').click(() => {
     $('#profile-name').text(proSurName + ' ' + proFirstName);
 
 })
+
 uploadContact();
 /* Event Click Change when changing value */
 $('#change-contact-value').click(() => {
-    // alert('changed')
-    proPic = fileName;
-    proID = $('#in-id-pro').val();
-    proBirthdate = $('#in-birthdate-pro').val();
-    proFirstName = $('#in-first-name-pro').val();
-    proSurName = $('#in-surname-pro').val();
-    proGender = $('#in-gender-pro').val();
-    proEmail = $('#in-email-pro').val();
-    alertImageChange = 0;
-    // console.log(proBirthdate);
-    $('#profile-name').text(proSurName + ' ' + proFirstName);
-    myProfileNavBar();
-    $.notify("Profile Updated", "success");
-    // $.notify("Record has been updated successfully!", "success");
+    let i = 4;
+    if (validationString($('#in-first-name-pro').val()) == 0) {
+        $($('#firstname-err')).css('display', 'inline');i--;
+    }else{$($('#firstname-err')).css('display', 'none');}
+    if (validationNumber($('#in-id-pro').val()) == 0) {
+        $($('#id-err')).css('display', 'inline');i--;
+    }else{$($('#id-err')).css('display', 'none');}
+    if (validationString($('#in-surname-pro').val()) == 0) {
+        $($('#surname-err')).css('display', 'inline')
+        i--;
+    }else{$($('#surname-err')).css('display', 'none');}
+    if (validationEmail($('#in-email-pro').val()) == 0) {
+        $($('#email-err')).css('display', 'inline')
+        i--;
+    }else{$($('#email-err')).css('display', 'none');}
+    console.log(i);
+    if (i >= 4) {
+        $($('#firstname-err')).css('display', 'none')
+        $($('#surname-err')).css('display', 'none')
+        $($('#email-err')).css('display', 'none')
+        $($('#id-err')).css('display', 'none')
+
+        proPic = fileName;
+        proID = $('#in-id-pro').val();
+        proBirthdate = $('#in-birthdate-pro').val();
+        proFirstName = $('#in-first-name-pro').val();
+        proSurName = $('#in-surname-pro').val();
+        proGender = $('#in-gender-pro').val();
+        proEmail = $('#in-email-pro').val();
+        alertImageChange = 0;
+        // console.log(proBirthdate);
+        $('#profile-name').text(proSurName + ' ' + proFirstName);
+        myProfileNavBar();
+        $.notify("Profile Updated", "success");
+        // $.notify("Record has been updated successfully!", "success");
+    } else {
+        $.notify("Invalid Value", "fail");
+    }
 })
+
 /* Changing Profile Image */
 $('#hover-pro-photo').on({
     mouseenter: () => {
@@ -239,3 +264,37 @@ $('input[type="file"]').change(function (e) {
     alertImageChange = 1;
 });
 
+const validationString = (str) => {
+    var patt = /[^a-z]/gi;
+    if (str.match(patt) == null) {
+        console.log("valid");
+        return 1;
+    } else {
+        console.log("Invalid");
+        //   alert("Invalid Value")
+        return 0;
+    }
+}
+
+const validationNumber = (phone) => {
+    var patt = /[^0-9]/gi;
+    // var i = 0;
+    // if(phone[0] == 0) i = 1;
+    if (phone.match(patt) == null) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+const validationEmail = (email) => {
+    // var $email = $('form input[name="email'); //change form to id or containment selector
+    var re = /[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm;
+    if (email == '' || !re.test(email)) {
+        console.log("email no ")
+        return 0;
+    } else {
+        console.log("Emial OK");
+        return 1;
+    }
+}

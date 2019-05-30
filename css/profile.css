@@ -98,3 +98,8 @@ a:hover{
 .imageUpload{
     color:transparent;
 }
+
+#firstname-err, #surname-err, #email-err, #id-err{
+    color : red;
+    display: none;
+}
