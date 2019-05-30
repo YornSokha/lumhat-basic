@@ -1,4 +1,3 @@
-
 /* Use for generate data auto */
 const initData = () => {
     for (let i = 0; i < 2; i++)

@@ -142,7 +142,11 @@ $(document).ready(function () {
 
     function setQuestionSkip(answer, question) {
         $('.form-check-label').css('width', 'initial');
-        $(answer.children[1]).css({"background-color": "#d1f2dc", "padding-right": "10px", "border-radius": "10px"});
+        $(answer.children[1]).css({
+            "background-color": "#d1f2dc",
+            "padding-right": "10px",
+            "border-radius": "10px"
+        });
         $(question).append('<p class="skipped" >Skipped</p>');
     }
 });
