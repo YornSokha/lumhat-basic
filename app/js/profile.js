@@ -10,7 +10,7 @@ var alertImageChange = 1;
 var proPic = 'img/imgPro/bgPro.jpg';
 var fileName = 'img/imgPro/bgPro.jpg';
 var proID = '7th';
-var proBirthdate = new Date().toLocaleDateString();
+var proBirthdate = '2019-05-30';
 var proFirstName = 'G4';
 var proSurName = 'HRD';
 var proGender = 'Other';
@@ -225,6 +225,7 @@ $('#change-contact-value').click(() => {
     proGender = $('#in-gender-pro').val();
     proEmail = $('#in-email-pro').val();
     alertImageChange = 0;
+    console.log(proBirthdate);
     $('#profile-name').text(proSurName + ' ' + proFirstName);
 })
 /* Changing Profile Image */
