@@ -56,7 +56,20 @@
     margin-top: 24px;
     margin-bottom: 98px;
 }
+p.skipped{
+    background: #F4E6E8;
+    color: #F05B24;
+    font-size: 15px;
+    width: 80px;
+    text-align: center;
+    margin-left: 22px;
+    border-radius: 10px;
+    margin-top: 5px;
+}
 
+.wrong-answer{
+    background-color: #e69a6e;
+}
 #instruction-tip {
     padding: 10px 10px;
     border-left: 4px solid #d8d8d8;
