@@ -211,7 +211,7 @@ $('#change-contact-value').click(() => {
     // console.log(proBirthdate);
     $('#profile-name').text(proSurName + ' ' + proFirstName);
     myProfileNavBar();
-    $.notify("Profile updated", "success");
+    $.notify("Profile Updated", "success");
     // $.notify("Record has been updated successfully!", "success");
 })
 /* Changing Profile Image */
@@ -237,3 +237,4 @@ $('input[type="file"]').change(function (e) {
     console.log(document.getElementById("hover-pro-photo").setAttribute('src', fileName))
     alertImageChange = 1;
 });
+
