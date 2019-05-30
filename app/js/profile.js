@@ -175,8 +175,45 @@ $('#pro-generate-data').click(() => {
     console.log(record);
     createTable();
 })
+const checkValidate = () => {
+    let i = 4;
+    if (validationString($('#in-first-name-pro').val()) == 0) {
+        $($('#firstname-err')).css('display', 'inline');
+        i--;
+    } else {
+        $($('#firstname-err')).css('display', 'none');
+    }
+    if (validationNumber($('#in-id-pro').val()) == 0) {
+        $($('#id-err')).css('display', 'inline');
+        i--;
+    } else {
+        $($('#id-err')).css('display', 'none');
+    }
+    if (validationString($('#in-surname-pro').val()) == 0) {
+        $($('#surname-err')).css('display', 'inline')
+        i--;
+    } else {
+        $($('#surname-err')).css('display', 'none');
+    }
+    if (validationEmail($('#in-email-pro').val()) == 0) {
+        $($('#email-err')).css('display', 'inline')
+        i--;
+    } else {
+        $($('#email-err')).css('display', 'none');
+    }
+    console.log(i);
+    return i;
+}
+
+const noError = () => {
+    $($('#firstname-err')).css('display', 'none')
+    $($('#surname-err')).css('display', 'none')
+    $($('#email-err')).css('display', 'none')
+    $($('#id-err')).css('display', 'none')
+}
 /* Generate to Contact */
 const uploadContact = () => {
+    noError();
     if (alertImageChange == 1) {
         $('input[type="file"]').val('');
     }
@@ -200,28 +237,9 @@ $('#pills-profile-tab').click(() => {
 uploadContact();
 /* Event Click Change when changing value */
 $('#change-contact-value').click(() => {
-    let i = 4;
-    if (validationString($('#in-first-name-pro').val()) == 0) {
-        $($('#firstname-err')).css('display', 'inline');i--;
-    }else{$($('#firstname-err')).css('display', 'none');}
-    if (validationNumber($('#in-id-pro').val()) == 0) {
-        $($('#id-err')).css('display', 'inline');i--;
-    }else{$($('#id-err')).css('display', 'none');}
-    if (validationString($('#in-surname-pro').val()) == 0) {
-        $($('#surname-err')).css('display', 'inline')
-        i--;
-    }else{$($('#surname-err')).css('display', 'none');}
-    if (validationEmail($('#in-email-pro').val()) == 0) {
-        $($('#email-err')).css('display', 'inline')
-        i--;
-    }else{$($('#email-err')).css('display', 'none');}
-    console.log(i);
+    let i = checkValidate();
     if (i >= 4) {
-        $($('#firstname-err')).css('display', 'none')
-        $($('#surname-err')).css('display', 'none')
-        $($('#email-err')).css('display', 'none')
-        $($('#id-err')).css('display', 'none')
-
+        noError();
         proPic = fileName;
         proID = $('#in-id-pro').val();
         proBirthdate = $('#in-birthdate-pro').val();
@@ -298,3 +316,4 @@ const validationEmail = (email) => {
         return 1;
     }
 }
+
