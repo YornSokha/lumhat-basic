@@ -13,14 +13,78 @@
     <!-- Material Design Bootstrap -->
     <link href="css/mdb.min.css" rel="stylesheet">
     <!-- Your custom styles (optional) -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="css/profile.css" rel="stylesheet">
+
+    <style type="text/css">
+        /* Chart.js */
+        @-webkit-keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        .chartjs-render-monitor {
+            -webkit-animation: chartjs-render-animation 0.001s;
+            animation: chartjs-render-animation 0.001s;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 </head>
 
 <body>
 
     <!-- Start your project here-->
     <div class="container">
-    </div>
+        <div class="row text-center">
+            <div class="col-12">
+                <div class="card profile-card">
+                    <div class="cus-bg">
+                    </div>
+                    <!-- <div class="cus-bg rgba-black-strong"> -->
+                    <!-- Avatar -->
+                    <div class="avatar z-depth-1-half mb-4 ">
+                        <!-- <a href="#!"> -->
+                        <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(10).jpg" class="rounded-circle"
+                            alt="First sample avatar image">
+                        <!-- </a> -->
+                        <div class="cus-change centered" id="pro-hover-change">
+                        </div>
+                    </div>
+                    <!-- </div> -->
+
+                    <div class="card-body pt-0 mt-0">
+
+                        <!-- Name -->
+                        <h3 class="mb-3 font-weight-bold"><strong>Anna Deynah</strong></h3>
+                        <h6 class="font-weight-bold cyan-text mb-4">Web Designer</h6>
+
+                        <p class="mt-4 text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                            eiusmod
+                            tempor incididunt
+                            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                            ullamco laboris nisi ut aliquip consequat.</p>
+
+                        <a class="btn btn-info btn-rounded waves-effect waves-light"> Follow</a>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
     <!-- /Start your project here-->
 
