@@ -80,33 +80,45 @@
     </div>
 </div>
 <div class="content">
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
-            <div class="col col-md-12">
+            <h1 class="quiz-title">Quiz 1</h1>
+            <div class="text-center col-12 col-sm-12 col-lg-12">
                 <div class="sub-quiz-result" style="display: none;">
-                    <p id="score">Score: <span id="result_score"></span>/<span
-                            id="full_score"></span></p>
-                    <p id="time_finish_blog">Time: <span id="time_finish"></span></p>
-                </div>
-                <div id="question_list">
-                </div>
-                <div class="text-center done-blog">
-                    <button type="button" id="btn_done"
-                            class="btn btn-result waves-effect waves-light calculate"
-                            data-toggle="modal" data-target="#modalPush"
-                            style="display: inline-block;">DONE
-                    </button>
-
-                    <!--TODO: SHOW THESE BUTTON WHEN FINISH QUIZ-->
-                    <a class="btn btn-result waves-effect waves-light" id="btn_quiz"
-                       style="color: white; display: none;" href="/profile">Quiz</a>
-                    <a class="btn btn-result waves-effect waves-light" id="btn_profile"
-                       style="color: white; display: none;" href="/profile">Profile</a>
-                    <a class="btn btn-result waves-effect waves-light" id="btn_home"
-                       style="color: white; display: none;" href="/home">Home</a>
-
+                    <p id="score">Score: <span id="result_score"></span>/<span id="full_score"></span></p>
+                    <p id="time_finish_blog">Time: <span id="time-finish"></span></p>
                 </div>
             </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-sm-12 col-lg-12 border-quiz">
+                <div id="instruction-tip">
+                    <i class="fas fa-info-circle pr-2"></i>
+                    <span id="instruction-detail">Please choose the correct answer.</span>
+                </div>
+
+                <br>
+
+                <div id="question_list">
+                </div>
+            </div>
+        </div>
+
+        <div class="button-group text-center done-blog">
+            <button type="button" id="btn_done"
+                    class="btn btn-blue-grey"
+                    data-toggle="modal" data-target="#modalPush"
+                    style="display: inline-block;">DONE
+            </button>
+
+            <!--TODO: SHOW THESE BUTTON WHEN FINISH QUIZ-->
+            <a class="btn btn-blue-grey text-white" id="btn_quiz"
+               style="display: none;" href="/profile">Quiz</a>
+            <a class="btn btn-blue-grey text-white" id="btn_profile"
+               style="display: none;" href="profile.html">Profile</a>
+            <a class="btn btn-blue-grey text-white" id="btn_home"
+               style="display: none;" href="index.html">Home</a>
         </div>
 
         <!-- Modal Start -->
@@ -143,7 +155,39 @@
                 </div>
             </div>
         </div>
+
+        <!--        Modal Done-->
+
+        <div class="modal fade" id="modal-done" tabindex="-1" role="dialog" aria-hidden="true"
+             style="padding-right: 17px;">
+            <div class="modal-dialog modal-notify modal-info" role="document">
+                <!--Content-->
+                <div class="modal-content text-center">
+                    <!--Header-->
+                    <div class="modal-header d-flex justify-content-center text-center"
+                         style="background-color:  #11999E;">
+                        <p class="heading">Alert</p>
+                    </div>
+                    <!--Body-->
+                    <div class="modal-body">
+                        <i class="far fa-check-circle fa-4x mb-4"></i>
+                        <p>Have you done it yet?</p>
+                    </div>
+                    <!--Footer-->
+                    <div class="modal-footer flex-center">
+                        <!--                        <a href="#" class="btn btn-color waves-effect btn-danger" data-dismiss="modal">NO</a>-->
+                        <button class="btn btn-color waves-effect btn-danger" data-dismiss="modal">NO</button>
+                        <!--                        <button class="btn btn-color waves-effect calculate" data-dismiss="modal" style="color: black;">YES</button>-->
+
+                        <a type="button" class="btn btn-color waves-effect calculate" data-dismiss="modal"
+                           style="color: white; background-color:  #11999E;">YES</a>
+                    </div>
+                </div>
+                <!--/.Content-->
+            </div>
+        </div>
     </div>
+
     <div class="container-fluid pt-3 pb-1 fixed-bottom" id="timer">
         <div class="row">
             <div class="col col-md-6">

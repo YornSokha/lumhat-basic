@@ -20,22 +20,22 @@
     });
 
     function setupModal(header, icon, text, button, buttonClass) {
-        $('.modal-content > .modal-header > p').text(header);
+        $('.modal-content > .modal-header > .lead').text(header);
         $('.modal-content > .modal-body > div > p').text(text);
         $('.modal-content > .modal-body > div > i').attr('class', icon);
-        $('.modal-content > .modal-footer > a').attr('class', buttonClass).text(button);
+        $('.modal-content > .justify-content-center > a').attr('class', buttonClass).text(button);
     }
 
     function onTime() {
         clearInterval(interval);
         setupModal('Time up', 'far fa-4x fa-check-circle', 'Please check your result!',
-            'CONTINUE', 'btn btn-warning waves-effect continue');
-        $('.modal-dialog').removeClass('modal-info').addClass('modal-warning').parent().modal('show');
+            'CONTINUE', 'btn btn-warning waves-effect calculate');
+        $('#start-modal').find('.modal-dialog').removeClass('modal-info').addClass('modal-warning').parent().modal('show');
     }
 
     function startTimer(duration, display) {
         startTime = Date.now();
-        console.log(startTime);
+        // console.log(startTime);
         let timer = duration,
             minutes, seconds;
         interval = setInterval(function () {
@@ -61,7 +61,7 @@
 
     $(document).on('click', '.start', () => {
         // alert();
-        startTimer(60 * 2, $('#clock'))
+        startTimer(20 * 60 , $('#clock'))
     });
 
     /**
@@ -249,7 +249,7 @@
                     {
                         answerId: 2,
                         answerDescription: "X",
-                        isCorrect: true,
+                        isCorrect: false,
                     },
 
                     {
@@ -266,21 +266,23 @@
         let str = "";
         let questionList = collection.questionList;
 
+        let counter = 1;
         for (let question of questionList) {
             str +=
                 `<div class=\"question question-item\" id=\"question_id_${question.questionId}\">` +
-                `<div id=\"questionDescription_${question.questionId}\">${question.questionDescription}</div>` +
-                `<div id=\"answerList_${question.questionId}\">`;
+                `<div class=\"question-title\" id=\"question_description_${question.questionId}\">${counter}. ${question.questionDescription}</div>` +
+                `<div class=\"answer-list\" id=\"answer_list_${question.questionId}\">`;
 
             for (let answer of question.answerList) {
                 str +=
-                    `<div class=\"form-check form-check-answer\">` +
-                    `<input type=\"radio\" class=\"form-check-input\" value=\"${answer.answerDescription}\" name=\"question_${question.questionId}\" id=\"answer_${question.questionId}_${answer.answerId}\" is-correct=\"${answer.isCorrect}\">` +
-                    `<label class=\"form-check-label\">${answer.answerDescription}</label>` +
+                    `<div class=\"form-check form-check-answer answer-item\">` +
+                    `<input type=\"radio\" class=\"form-check-input radio-answer option-input radio\" value=\"${answer.answerDescription}\" name=\"question_${question.questionId}\" id=\"answer_${question.questionId}_${answer.answerId}\" is-correct=\"${answer.isCorrect}\">` +
+                    `<label class=\"label-answer form-check-label\">${answer.answerDescription}</label>` +
                     `</div>`;
             }
 
             str += `</div></div>`;
+            counter++;
         }
         document.getElementById('question_list').innerHTML = str;
 
