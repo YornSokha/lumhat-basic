@@ -270,8 +270,7 @@
         for (let question of questionList) {
             str +=
                 `<div class=\"question question-item\" id=\"question_id_${question.questionId}\">` +
-                `<div class=\"question-title\" id=\"question_description_${question.questionId}\">${counter}. ${question.questionDescription}</div>` +
-                `<div class=\"answer-list\" id=\"answer_list_${question.questionId}\">`;
+                `<div class=\"question-title\" id=\"question_description_${question.questionId}\">${counter}. ${question.questionDescription}</div>`;
 
             for (let answer of question.answerList) {
                 str +=
@@ -281,7 +280,7 @@
                     `</div>`;
             }
 
-            str += `</div></div>`;
+            str += `</div>`;
             counter++;
         }
         document.getElementById('question_list').innerHTML = str;
