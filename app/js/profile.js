@@ -1,21 +1,4 @@
-var totalSubject = 0;
-var subRecord = []; //Record for each subject
-var myStr; //Subject name
-//
-var record = []; //Total Record
-//
-//
-/* Fixed Data */
-var alertImageChange = 1;
-var proPic = 'img/imgPro/bgPro.jpg';
-var fileName = 'img/imgPro/bgPro.jpg';
-var proID = '7th';
-var proBirthdate = new Date().toLocaleDateString();
-var proFirstName = 'G4';
-var proSurName = 'HRD';
-var proGender = 'Other';
-var proEmail = 'example@ex.co';
-/* End Fixing */
+
 /* Use for generate data auto */
 const initData = () => {
     for (let i = 0; i < 2; i++)
@@ -206,6 +189,7 @@ const uploadContact = () => {
     $('#in-gender-pro').val(proGender);
     $('#in-email-pro').val(proEmail).trigger("change");
     $('#profile-name').text(proSurName + ' ' + proFirstName);
+
 };
 /*  */
 $('#pills-profile-tab').click(() => {
@@ -216,7 +200,7 @@ $('#pills-profile-tab').click(() => {
 uploadContact();
 /* Event Click Change when changing value */
 $('#change-contact-value').click(() => {
-    alert('changed')
+    // alert('changed')
     proPic = fileName;
     proID = $('#in-id-pro').val();
     proBirthdate = $('#in-birthdate-pro').val();
@@ -225,7 +209,11 @@ $('#change-contact-value').click(() => {
     proGender = $('#in-gender-pro').val();
     proEmail = $('#in-email-pro').val();
     alertImageChange = 0;
+    // console.log(proBirthdate);
     $('#profile-name').text(proSurName + ' ' + proFirstName);
+    myProfileNavBar();
+    $.notify("Profile updated", "success");
+    // $.notify("Record has been updated successfully!", "success");
 })
 /* Changing Profile Image */
 $('#hover-pro-photo').on({

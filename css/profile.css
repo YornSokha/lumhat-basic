@@ -43,7 +43,7 @@ th{
 .centered {
     display: block;
     position: absolute;
-    top: 312px;
+    top: 412px;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -93,4 +93,8 @@ a:hover{
 }
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link{
     background-color: rgba(255, 255, 255, .2) !important;
+}
+
+.imageUpload{
+    color:transparent;
 }
