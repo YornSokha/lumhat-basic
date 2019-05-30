@@ -74,7 +74,7 @@ function loadCollection(collection) {
     for (let question of questionList) {
         str +=
             `<div class=\"question question-item\" id=\"question_id_${counter}\">` +
-            `<div class=\"question-title\" id=\"question_description_${counter}\">${counter}. ${question.questionDescription}</div>`;
+            `<div class=\"question-title\" id=\"question_description_${counter}\">${counter+1}. ${question.questionDescription}</div>`;
 
         let in_counter = 0;
         for (let answer of question.answerList) {
