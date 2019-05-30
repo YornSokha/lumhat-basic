@@ -47,7 +47,7 @@ $('#pro-nav-bar').append(
                                 <div>
                                     <li class="nav-item">
                                         <a class="nav-link "  href="profile.html" aria-expanded="false" >
-                                            <span ><i class="fa fa-user-circle-o login"></i><span>
+                                            <span ><span>
                                             <img class="rounded-circle" src="${proPic}" style="width: ${myImgNav}px; height: ${myImgNav}px"
                                                 alt="First sample avatar image">&nbsp&nbsp${proSurName}</span></span>
                                         </a>
