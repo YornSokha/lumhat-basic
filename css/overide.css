@@ -1,14 +1,20 @@
-body,html{
+body,html {
     font-family: 'Hanuman', sans-serif !important;
     height: 100%;
 }
 /*=============== Header ===============*/
-
+.navbar:not(.top-nav-collapse) {
+    background: #FAFAFA !important;
+}
+.menu-list li {
+    margin-left: 10px;
+}
 .info-color{
     background-color:#FAFAFA !important;
 }
-.navbar{
-    box-shadow: none;
+.navbar li a{
+    font-size: 16px;
+    font-family: 'Hanuman', sans-serif !important;
 }
 .nav-item a:hover {
     color: #906161 !important;
@@ -34,7 +40,6 @@ body,html{
     box-shadow: 1px 2px 2px 1px rgba(0,0,0,.2);
 }
 /*=============== Content ===============*/
-
 .btn.btn-sm {
     font-size: .84rem;
 }
