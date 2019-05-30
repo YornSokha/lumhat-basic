@@ -1,25 +1,21 @@
-tr {
+tr{
     border: 1px solid black;
-
 }
 
-th {
+th{
     border: 1px solid red;
     width: 200px;
 }
 
-.item-w-100>td {
+.item-w-100 > td{
     width: 200px;
-    background-color: aqua;
 }
 
-.tbl-item>thead {
-    background-color: green;
+.tbl-item > thead{
+    background-color: #11999E !important;
 }
 
 .profile-card .avatar {
-    /* max-width: 150px; */
-    /* max-height: 150px; */
     margin-top: -125px;
     margin-left: auto;
     margin-right: auto;
@@ -37,29 +33,68 @@ th {
     border-radius: 3px;
 }
 
-.cus-bg {
-    height: 250px;
-    background-image: url("../imgPro/bgPro.jpg");
+.cus-bg{
+    height: 350px;
+    background-image: url("../img/imgPro/bgPro.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .centered {
+    display: block;
     position: absolute;
-    /* position: relative; */
-    /* top: 50%; */
-    top: 312px;
+    top: 412px;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* z-index: 1; */
 }
 
-.cus-change {
+.cus-change{
     width: 250px;
     height: 125px;
     border-bottom-left-radius: 250px;
     border-bottom-right-radius: 250px;
     background-color: rgba(0, 0, 0, 0.5);
-    /* border-radius: 50%; */
-
 }
 
+#in-gender-pro{
+    border: 0px;
+    opacity:0.75; 
+    font-weight: 300;
+}
 
+.bg-white{
+    background-color: white;
+    padding-left: 0;
+}
+
+.createHid{
+    display: none;
+}
+
+#pro-change-photo{
+    color: white;
+    background-color: rgba(0, 0, 0, 0);
+    width: 75%;
+    border: 0;
+    margin-top: 10px;
+}
+
+#pills-tab{
+    background-color: #11999E !important;
+    padding: 1% 5%;
+}
+
+a{
+    color: white;
+}
+
+a:hover{
+    color: black;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+    background-color: rgba(255, 255, 255, .2) !important;
+}
+
+.imageUpload{
+    color:transparent;
+}
