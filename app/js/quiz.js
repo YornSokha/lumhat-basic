@@ -6,7 +6,7 @@
     let stopTime;
 
     function initComponents() {
-        setupModal("Let's Start the Quiz", 'far fa-4x fa-clock', 'You have 20 Minutes',
+        setupModal("Let's Start the Quiz", 'far fa-clock fa-4x', 'You have 20 Minutes',
             'START', 'btn btn-outline-primary waves-effect start');
         $('#start-modal').modal({
             backdrop: 'static',
