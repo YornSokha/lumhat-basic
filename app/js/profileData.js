@@ -9,12 +9,12 @@ var record = []; //Total Record
 var alertImageChange = 1;
 var proPic = 'img/imgPro/bgPro.jpg';
 var fileName = 'img/imgPro/bgPro.jpg';
-var proID = '7th';
+var proID = '2019001';
 var proBirthdate = '2019-05-30';
-var proFirstName = 'G4';
-var proSurName = 'HRD';
+var proFirstName = 'Four';
+var proSurName = 'Group';
 var proGender = 'Other';
-var proEmail = 'example@ex.co';
+var proEmail = 'group_four@kshrd.com';
 /* End Fixing */
 
 const addRecord = (subjects, dates, scores, durings, quizs)=>{

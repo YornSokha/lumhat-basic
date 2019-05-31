@@ -154,4 +154,129 @@ for(let item of questionList) {
     collection.addQuestion(item);
 }
 
-console.log(collection);
+const collection_java = new Collection();
+const questionList_java = [
+    new Question()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer(),
+
+    new Question()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer(),
+
+    new Question()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer(),
+
+    new Question()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer(),
+
+    new Question()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer(),
+
+    new Question()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer(),
+
+    new Question()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer(),
+
+    new Question()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer(),
+
+    new Question()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer(),
+
+    new Question()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer(),
+
+    new Question()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer(),
+
+    new Question()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer(),
+
+    new Question()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer(),
+
+    new Question()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer(),
+
+    new Question()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer(),
+
+    new Question()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer(),
+
+    new Question()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer(),
+
+    new Question()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer(),
+
+    new Question()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer(),
+
+    new Question()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer()
+        .addAnswer(),
+];
+
+for(let item of questionList_java) {
+    collection_java.addQuestion(item);
+}

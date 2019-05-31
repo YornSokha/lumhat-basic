@@ -84,9 +84,6 @@ th{
     padding: 1% 5%;
 }
 
-a{
-    color: white;
-}
 
 a:hover{
     color: black;
@@ -97,4 +94,9 @@ a:hover{
 
 .imageUpload{
     color:transparent;
+}
+
+#firstname-err, #surname-err, #email-err, #id-err{
+    color : red;
+    display: none;
 }
