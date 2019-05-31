@@ -135,3 +135,16 @@ p.skipped{
 .card{
     margin-top: 7rem!important
 }
+.progress-bar {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-pack: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #27999e!important;
+    transition: width .6s ease;
+}

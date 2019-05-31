@@ -60,7 +60,7 @@ function startTimer(duration, display) {
 
 $(document).on('click', '.start', () => {
     // alert();
-    startTimer(20 * 60, $('#clock'))
+    startTimer(20 * 60 - 1, $('#clock'))
 });
 
 /**
@@ -74,7 +74,7 @@ function loadCollection(collection) {
     for (let question of questionList) {
         str +=
             `<div class=\"question question-item\" id=\"question_id_${counter}\">` +
-            `<div class=\"question-title\" id=\"question_description_${counter}\">${counter+1}. ${question.questionDescription}</div>`;
+            `<div class=\"question-title\" id=\"question_description_${counter}\">${counter + 1}. ${question.questionDescription}</div>`;
 
         let in_counter = 0;
         for (let answer of question.answerList) {
